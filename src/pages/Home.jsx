@@ -5,6 +5,7 @@ import HomeHero from "../components/HomeHero";
 import FloatingStats from "../components/FloatingStats";
 import ScrollIndicator from "../components/ScrollIndicator";
 import SpaceScene from "../components/SpaceScene";
+import Chatbot from "../components/Chatbot";
 
 function Home() {
 
@@ -39,9 +40,8 @@ function Home() {
         <div className="relative z-20">
 
           <HomeHero />
-
+<Chatbot />
           <FloatingStats />
-
           <ScrollIndicator />
 
         </div>

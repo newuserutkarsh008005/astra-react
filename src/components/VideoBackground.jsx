@@ -1,5 +1,8 @@
+import { div } from "three/src/nodes/math/OperatorNode.js"
+
 function VideoBackground() {
   return (
+    
     <video
       autoPlay
       muted

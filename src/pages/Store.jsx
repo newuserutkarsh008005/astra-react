@@ -4,7 +4,7 @@ import StoreHero from "../components/StoreHero";
 function Store() {
   return (
     <PageWrapper>
-    <div className="relative h-screen overflow-hidden text-white bg-black">
+    <div className="relative min-h-screen overflow-hidden text-white bg-black">
 
       {/* Background Image */}
       <img

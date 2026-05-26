@@ -1,5 +1,5 @@
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-
+import { useEffect, useState } from "react";
 import {
   Stars,
   Line,
@@ -332,11 +332,212 @@ function HUD() {
   );
 }
 
+function MouseReactiveStars() {
 
+  const starsRef = useRef();
+
+  const mouse = useRef({
+    x: 0,
+    y: 0,
+  });
+
+  useEffect(() => {
+
+    const handleMouseMove = (e) => {
+
+      mouse.current.x =
+        (e.clientX / window.innerWidth - 0.5) * 2;
+
+      mouse.current.y =
+        (e.clientY / window.innerHeight - 0.5) * 2;
+    };
+
+    window.addEventListener(
+      "mousemove",
+      handleMouseMove
+    );
+
+    return () =>
+      window.removeEventListener(
+        "mousemove",
+        handleMouseMove
+      );
+
+  }, []);
+
+  useFrame(({ clock }) => {
+
+  if (!starsRef.current) return;
+
+  const t = clock.getElapsedTime();
+
+  // Infinite cosmic drifting
+  starsRef.current.rotation.y += 0.00015;
+
+  starsRef.current.rotation.x =
+    Math.sin(t * 0.05) * 0.015;
+
+  // Mouse interaction
+  starsRef.current.rotation.y +=
+    (mouse.current.x * 0.02 -
+      starsRef.current.rotation.y) *
+    0.02;
+
+  starsRef.current.rotation.x +=
+    (-mouse.current.y * 0.015 -
+      starsRef.current.rotation.x) *
+    0.02;
+
+  // Living-space breathing effect
+  const pulse =
+    1 + Math.sin(t * 0.7) * 0.003;
+
+  starsRef.current.scale.x =
+    pulse + Math.abs(mouse.current.x) * 0.01;
+
+  starsRef.current.scale.y =
+    pulse + Math.abs(mouse.current.y) * 0.01;
+
+  starsRef.current.scale.z =
+    pulse;
+});
+
+  return (
+
+    <group ref={starsRef}>
+
+      <Stars
+        radius={90}
+        depth={30}
+        count={10000}
+        factor={5}
+        saturation={0}
+        fade
+        speed={0.25}
+      />
+
+    </group>
+  );
+}
 
 // ========================================
 // MAIN SCENE
 // ========================================
+function DynamicLighting() {
+
+  const directionalRef = useRef();
+  const ambientRef = useRef();
+
+  useFrame(({ clock }) => {
+
+    if (
+      !directionalRef.current ||
+      !ambientRef.current
+    ) return;
+
+    const t = clock.getElapsedTime();
+
+    // Smooth day cycle
+    const cycle =
+      (Math.sin(t * 0.05) + 1) / 2;
+
+    // TARGET VALUES
+    const targetIntensity =
+      1.2 + cycle * 3.2;
+
+    const targetX =
+      Math.sin(t * 0.05) * 18;
+
+    const targetY =
+      Math.cos(t * 0.05) * 8;
+
+    // SMOOTH POSITION
+    directionalRef.current.position.x +=
+      (
+        targetX -
+        directionalRef.current.position.x
+      ) * 0.008;
+
+    directionalRef.current.position.y +=
+      (
+        targetY -
+        directionalRef.current.position.y
+      ) * 0.008;
+
+    // SMOOTH INTENSITY
+    directionalRef.current.intensity +=
+      (
+        targetIntensity -
+        directionalRef.current.intensity
+      ) * 0.01;
+
+    // COLOR BLENDING
+    const sunrise =
+      new THREE.Color("#ff9966");
+
+    const noon =
+      new THREE.Color("#fff4d6");
+
+    const sunset =
+      new THREE.Color("#ff7744");
+
+    let targetColor;
+
+    if (cycle < 0.35) {
+
+      targetColor = sunrise;
+
+    } else if (cycle < 0.75) {
+
+      targetColor = noon;
+
+    } else {
+
+      targetColor = sunset;
+    }
+
+    // VERY SMOOTH COLOR TRANSITION
+    directionalRef.current.color.lerp(
+      targetColor,
+      0.008
+    );
+
+    // AMBIENT SMOOTHNESS
+    const ambientTarget =
+      0.2 + cycle * 0.35;
+
+    ambientRef.current.intensity +=
+      (
+        ambientTarget -
+        ambientRef.current.intensity
+      ) * 0.01;
+  });
+
+  return (
+    <>
+      {/* Ambient */}
+      <ambientLight
+        ref={ambientRef}
+        intensity={0.3}
+      />
+
+      {/* Main Sun */}
+      <directionalLight
+        ref={directionalRef}
+        position={[10, 5, 5]}
+        intensity={2}
+        color="#fff4d6"
+      />
+
+      {/* Glow */}
+      <pointLight
+        position={[10, 2, 2]}
+        intensity={6}
+        color="#ffbb77"
+      />
+    </>
+  );
+}
 
 function SpaceScene() {
 
@@ -363,47 +564,11 @@ function SpaceScene() {
           args={["#020207"]}
         />
 
-        {/* LIGHTING */}
-        <ambientLight intensity={0.38} />
-
-        <directionalLight
-
-          position={[8, 5, 5]}
-
-          intensity={4.5}
-
-          color="#ffd7a8"
-
-        />
-
-        <pointLight
-
-          position={[10, 2, 2]}
-
-          intensity={10}
-
-          color="#ffbb77"
-
-        />
+        {/* DYNAMIC LIGHTING */}
+        <DynamicLighting />
 
         {/* STARS */}
-        <Stars
-
-          radius={260}
-
-          depth={60}
-
-          count={10000}
-
-          factor={4}
-
-          saturation={0}
-
-          fade
-
-          speed={1.25}
-
-        />
+        <MouseReactiveStars />
 
         {/* ORBITS */}
         <OrbitPaths />
@@ -422,7 +587,7 @@ function SpaceScene() {
 
       </Canvas>
 
-      {/* CINEMATIC VIGNETTE */}
+      {/* CINEMATIC OVERLAY */}
       <div
         className="
           absolute

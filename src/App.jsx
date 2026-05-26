@@ -18,6 +18,7 @@ import Store from "./pages/Store";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import PageWrapper from "./components/PageWrapper";
+import Chatbot from "./components/Chatbot";
 
 const App = () => {
 
@@ -70,6 +71,7 @@ const App = () => {
       </AnimatePresence>
 
       <Footer />
+      
 
     </div>
     </PageWrapper>
