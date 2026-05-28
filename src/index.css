@@ -2,3 +2,232 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
+
+.threedot{
+  display: none;
+  background: transparent;
+  border: none;
+  color: #d5bb93;
+  font-size: 1.4rem;
+  padding: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.videfor{
+    display: none;
+}
+@media (max-width:800px) {
+    .threedot{
+        display:block !important;
+    margin-right: 5px;
+
+    }
+    .navigation{
+      display: none;
+    }
+    /* when menu is toggled open (via JS), show navigation as dropdown */
+    .navigation.open{
+      display: flex !important;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      flex-wrap: nowrap;
+      background: rgba(2,6,12,0.92);
+      backdrop-filter: blur(8px);
+      padding: 10px 12px;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+      z-index: 60;
+      min-width: 160px;
+    }
+    /* ensure dropdown appears above background videos and overlays */
+    .nav-controls{position: relative; z-index: 99999}
+    .nav-controls .navigation.open{position: absolute; top: calc(100% + 8px); right: 0; z-index: 100000}
+    /* portal dropdown (rendered at document.body) should be fixed near top-right */
+    .mobile-portal{
+      position: fixed;
+      top: 64px;
+      right: 20px;
+      z-index: 200000;
+    }
+    /* dropdown behaviour: open downward, allow scrolling if many items, add subtle animation */
+    .navigation.open{
+      transform-origin: top right;
+      animation: dropdownDown 180ms cubic-bezier(.2,.9,.2,1) both;
+      min-width: 180px;
+      max-width: 260px;
+      max-height: 60vh;
+      overflow: auto;
+    }
+
+    @keyframes dropdownDown {
+      from {
+        opacity: 0;
+        transform: translateY(-6px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    .navigation.open a{
+      padding: 6px 8px;
+      border-radius: 6px;
+    }
+    .navigation.open a:hover{
+      background: rgba(255,255,255,0.03);
+    }
+    .threedot{
+        display:block !important;
+        margin-right: 5px;
+    }
+    .profilepic{
+       margin-left: auto;
+    }
+    .mainnavigation{
+        
+        justify-content: space-around;
+        gap: 20px;
+        position: relative;
+    }
+    .overf{
+      
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        gap: 20px;
+        padding: 10px 10px;
+        overflow: scroll;
+    }
+    .mainfooter{
+       
+       display: flex;
+       flex-direction: row;
+       flex-wrap: nowrap;
+      overflow: hidden;
+    }
+    .space{
+        display: none;
+        
+    }
+    .videfor{
+        display: block;
+    }
+    .responsive {
+  position: relative;
+  overflow: hidden;
+
+  background: linear-gradient(
+    180deg,
+    #02040A 0%,
+    #07111F 45%,
+    #0B1020 100%
+  );
+
+  background-size: 400% 400%;
+  animation: cosmicShift 15s ease infinite;
+}
+
+.responsive::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  
+  background:
+    radial-gradient(
+      circle at 20% 30%,
+      rgba(94, 235, 255, 0.12),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(139, 92, 246, 0.10),
+      transparent 35%
+    );
+
+  filter: blur(60px);
+  animation: nebulaMove 20s ease-in-out infinite alternate;
+
+  z-index: 0;
+}
+
+.responsive > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes cosmicShift {
+  0% {
+    background: linear-gradient(
+      180deg,
+      #02040A 0%,
+      #07111F 45%,
+      #0B1020 100%
+    );
+  }
+
+  25% {
+    background: linear-gradient(
+      180deg,
+      #050816 0%,
+      #0A1A2F 45%,
+      #111827 100%
+    );
+  }
+
+  50% {
+    background: linear-gradient(
+      180deg,
+      #02040A 0%,
+      #10203A 45%,
+      #1A1B26 100%
+    );
+  }
+
+  75% {
+    background: linear-gradient(
+      180deg,
+      #030712 0%,
+      #0B132B 45%,
+      #101A35 100%
+    );
+  }
+
+  100% {
+    background: linear-gradient(
+      180deg,
+      #02040A 0%,
+      #07111F 45%,
+      #0B1020 100%
+    );
+  }
+}
+
+@keyframes nebulaMove {
+  from {
+    transform: translate(-5%, -5%) scale(1);
+  }
+
+  to {
+    transform: translate(5%, 5%) scale(1.15);
+  }
+}
+.fotterl{
+   display: flex;
+   overflow: scroll;
+   flex-wrap: wrap;
+   flex-direction: row;
+}
+.mainchat{
+    overflow: hidden;
+    right: 0;
+margin-right:auto ;
+}
+.chatbot{
+   height: 450px;
+width: 80%;
+margin-left: 50px;
+margin-right:auto ;
+}
+
+}

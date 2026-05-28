@@ -7,17 +7,15 @@ import PageWrapper from "../components/PageWrapper";
 
 function About() {
   return (
-    
     <div className="relative min-h-screen overflow-hidden text-white">
 
+      {/* VIDEO */}
       <VideoBackground2 />
 
-      <div className="fixed inset-0 bg-black/60 z-10"></div>
+      {/* OVERLAY */}
 
+      {/* CONTENT */}
       <div className="relative z-20">
-
-       
-
         <AboutHero />
 
         <AboutSection
@@ -36,13 +34,11 @@ function About() {
         />
 
         <QuoteSection />
-
-       
-
       </div>
+
     </div>
-    
   );
 }
+
 
 export default About;

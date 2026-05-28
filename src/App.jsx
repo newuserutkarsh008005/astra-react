@@ -25,10 +25,10 @@ const App = () => {
   const location = useLocation();
 
   return (
-<PageWrapper>    <div className="bg-black min-h-screen text-white overflow-hidden">
+<PageWrapper>    <div className= "responsive bg-black min-h-screen text-white overflow-hidden">
+
 
       <Nav />
-
       <AnimatePresence mode="wait">
 
         <Routes

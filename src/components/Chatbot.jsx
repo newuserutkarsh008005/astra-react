@@ -124,267 +124,174 @@ const Chatbot = () => {
     }
   }
 
-  return createPortal(
-
-    <div className="fixed bottom-6 right-6 z-[999999]">
+return (
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[999999]">
 
       {/* Toggle Button */}
       {!open && (
-
         <button
           onClick={() => setOpen(true)}
-
           className="
-          w-16
-          h-16
-          rounded-full
-          bg-gradient-to-r
-          from-purple-600
-          to-blue-600
-          text-white
-          text-2xl
-          shadow-2xl
-          hover:scale-110
-          transition-all
-          flex
-          items-center
-          justify-center
-        "
+            w-14 h-14 sm:w-16 sm:h-16
+            rounded-full
+            bg-gradient-to-r from-purple-600 to-blue-600
+            text-white text-2xl
+            shadow-2xl
+            hover:scale-110 transition-all
+            flex items-center justify-center
+          "
         >
           ✦
         </button>
-
       )}
 
       {/* Chat Window */}
       {open && (
-
         <div
           className="
-          w-[360px]
-          h-[600px]
-          bg-black/40
-          backdrop-blur-xl
-          border border-white/10
-          rounded-3xl
-          shadow-2xl
-          overflow-hidden
-          flex flex-col
-          
-        "
+            w-[90vw] max-w-[360px]
+            h-[75vh] sm:h-[600px]
+            bg-black/40 backdrop-blur-xl
+            border border-white/10
+            rounded-3xl
+            shadow-2xl
+            overflow-hidden
+            flex flex-col
+          "
         >
 
           {/* Header */}
-          <div
-            className="
-            p-5
+          <div className="
+            p-4 sm:p-5
             border-b border-white/10
-            bg-gradient-to-r
-            from-purple-600
-            to-blue-600
-            flex
-            items-center
-            justify-between
-          "
-          >
-
+            bg-gradient-to-r from-purple-600 to-blue-600
+            flex items-center justify-between
+          ">
             <div>
-
-              <h1 className="text-2xl font-bold text-white">
+              <h1 className="text-xl sm:text-2xl font-bold text-white">
                 Astra Intelligence
               </h1>
-
-              <p className="text-sm text-gray-200 mt-1">
+              <p className="text-xs sm:text-sm text-gray-200 mt-1">
                 AI Cosmic Assistant
               </p>
-
             </div>
 
-            {/* Close */}
             <button
               onClick={() => setOpen(false)}
-
               className="
-              w-10
-              h-10
-              rounded-full
-              bg-white/10
-              text-white
-              hover:bg-white/20
-              transition-all
-            "
+                w-9 h-9 sm:w-10 sm:h-10
+                rounded-full
+                bg-white/10
+                text-white
+                hover:bg-white/20
+                transition-all
+              "
             >
               ✕
             </button>
-
           </div>
 
           {/* Chat Area */}
           <div
             ref={chatContainerRef}
-
             className="
-            flex-1
-            overflow-y-auto
-            p-4
-            space-y-4
-            scroll-smooth
-          "
+              flex-1
+              overflow-y-auto
+              p-3 sm:p-4
+              space-y-4
+            "
           >
-
             {messages.map((msg, index) => (
-
               <div
                 key={index}
-
-                className={`
-                  flex
-                  ${
-                    msg.role === "user"
-                      ? "justify-end"
-                      : "justify-start"
-                  }
-                `}
+                className={`flex ${
+                  msg.role === "user" ? "justify-end" : "justify-start"
+                }`}
               >
-
                 <div
                   className={`
                     max-w-[80%]
-                    px-4
-                    py-3
+                    px-3 sm:px-4
+                    py-2 sm:py-3
                     rounded-2xl
                     text-sm
-                    leading-relaxed
-                    shadow-lg
                     break-words
+                    shadow-lg
                     ${
                       msg.role === "user"
-                        ? `
-                          bg-gradient-to-r
-                          from-blue-500
-                          to-cyan-500
-                          text-white
-                          rounded-br-sm
-                        `
-                        : `
-                          bg-white/10
-                          border border-white/10
-                          text-gray-100
-                          rounded-bl-sm
-                        `
+                        ? "bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-br-sm"
+                        : "bg-white/10 border border-white/10 text-gray-100 rounded-bl-sm"
                     }
                   `}
                 >
-
                   {msg.content}
-
                 </div>
-
               </div>
-
             ))}
 
-            {/* Loading */}
             {loading && (
-
               <div className="flex justify-start">
-
-                <div
-                  className="
-                  bg-white/10
-                  border border-white/10
-                  text-white
-                  px-4
-                  py-3
-                  rounded-2xl
-                  rounded-bl-sm
+                <div className="
+                  bg-white/10 border border-white/10
+                  text-white px-4 py-3
+                  rounded-2xl rounded-bl-sm
                   animate-pulse
-                "
-                >
+                ">
                   Astra is thinking...
                 </div>
-
               </div>
-
             )}
-
           </div>
 
           {/* Input */}
-          <div
-            className="
-            p-4
+          <div className="
+            p-3 sm:p-4
             border-t border-white/10
             bg-black/20
-          "
-          >
-
-            <div className="flex items-center gap-3">
+          ">
+            <div className="flex items-center gap-2 sm:gap-3">
 
               <input
                 type="text"
-
                 placeholder="Ask Astra anything..."
-
                 value={input}
-
-                onChange={(e) =>
-                  setInput(e.target.value)
-                }
-
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    getanswer();
-                  }
-                }}
-
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && getanswer()}
                 className="
-                flex-1
-                bg-white/10
-                border border-white/10
-                rounded-full
-                px-5
-                py-3
-                text-white
-                placeholder-gray-400
-                outline-none
-                focus:border-blue-400
-                transition-all
-              "
+                  flex-1
+                  bg-white/10
+                  border border-white/10
+                  rounded-full
+                  px-4 sm:px-5
+                  py-2 sm:py-3
+                  text-white
+                  placeholder-gray-400
+                  outline-none
+                  focus:border-blue-400
+                "
               />
 
-              {/* Send Button */}
               <button
                 onClick={getanswer}
-
                 className="
-                w-12
-                h-12
-                rounded-full
-                bg-gradient-to-r
-                from-purple-500
-                to-blue-500
-                text-white
-                font-bold
-                hover:scale-105
-                transition-all
-                shadow-lg
-              "
+                  w-10 h-10 sm:w-12 sm:h-12
+                  rounded-full
+                  bg-gradient-to-r from-purple-500 to-blue-500
+                  text-white font-bold
+                  hover:scale-105 transition-all
+                  shadow-lg
+                "
               >
                 ↑
               </button>
 
             </div>
-
           </div>
 
         </div>
-
       )}
 
-    </div>,
-
-    document.body
+    </div>
   );
 };
 

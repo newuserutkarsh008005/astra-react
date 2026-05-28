@@ -300,7 +300,7 @@ function HUD() {
     <Html fullscreen>
 
       <div
-        className="
+        className=" space
           absolute
           inset-0
           pointer-events-none
@@ -315,8 +315,8 @@ function HUD() {
         
 
         {/* BOTTOM LEFT */}
-        <div
-          className="
+        <div 
+          className=" space
             absolute
             bottom-12
             left-7
@@ -544,7 +544,7 @@ function SpaceScene() {
   return (
 
     <div
-      className="
+      className=" space
         absolute
         inset-0
         z-0
@@ -589,7 +589,7 @@ function SpaceScene() {
 
       {/* CINEMATIC OVERLAY */}
       <div
-        className="
+        className=" space
           absolute
           inset-0
           bg-gradient-to-b

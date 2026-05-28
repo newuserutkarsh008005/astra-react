@@ -1,53 +1,72 @@
 import PageWrapper from "../components/PageWrapper";
 
-
 import HomeHero from "../components/HomeHero";
 import FloatingStats from "../components/FloatingStats";
 import ScrollIndicator from "../components/ScrollIndicator";
 import SpaceScene from "../components/SpaceScene";
 import Chatbot from "../components/Chatbot";
-
+import { useRef, useEffect } from "react";
 function Home() {
+  const videoRef = useRef(null);
 
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.6; // slow motion
+    }
+  }, []);
   return (
-
+    
     <PageWrapper>
-
-      <div
-        className="
+      
+        <div
+          className=" bgimg
           relative
           min-h-screen
           overflow-hidden
           bg-[#010103]
           text-white
         "
+        >
+          <div className="videfor absolute h-screen w-full overflow-hidden">
+
+      {/* Background Video */}
+      <video
+      ref={videoRef}
+        className="absolute top-0 left-0 w-full h-full object-cover"
+        autoPlay
+        loop
+        muted
+        playsInline
       >
+        <source src="./public/Videos/video.mp4" type="video/mp4" />
+      </video>
 
-        {/* 3D SPACE */}
-       <SpaceScene />
+      
+      
+</div>
+          {/* 3D SPACE */}
+          <SpaceScene />
 
-        {/* OVERLAY */}
-        <div
-          className="
+          {/* OVERLAY */}
+          <div
+            className="
             absolute
             inset-0
             bg-black/20
             z-10
           "
-        />
+          />
 
-        {/* CONTENT */}
-        <div className="relative z-20">
-
-          <HomeHero />
-<Chatbot />
-          <FloatingStats />
-          <ScrollIndicator />
-
+          {/* CONTENT */}
+          <div className="relative z-20">
+            <HomeHero />
+            <Chatbot />
+            <FloatingStats />
+            <ScrollIndicator />
+          </div>
+          
         </div>
-
-      </div>
-
+      
     </PageWrapper>
   );
 }
