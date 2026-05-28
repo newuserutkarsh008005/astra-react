@@ -19,7 +19,7 @@ function Contact() {
   <VideoBackground />
 
   {/* DARK OVERLAY */}
-  <div className="fixed inset-0 bg-black/60 z-10"></div>
+  <div className="videoplay2 inset-0 bg-black/60 z-10"></div>
 
   {/* PAGE CONTENT */}
   <div className="relative z-20">

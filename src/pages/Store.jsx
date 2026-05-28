@@ -4,17 +4,16 @@ import StoreHero from "../components/StoreHero";
 function Store() {
   return (
     <PageWrapper>
-    <div className="relative min-h-screen overflow-hidden text-white bg-black">
+    <div className="  h-screen overflow-hidden text-white bg-black">
 
       {/* Background Image */}
       <img
-        className="fixed inset-0  w-screen"
+        className="absolute  inset-0  w-screen h-screen  opacity-40"
         src="/images/newp.png"
         alt="Store Background"
       />
 
       {/* Dark Overlay */}
-      <div className="fixed inset-0 bg-black/50"></div>
 
       {/* Content */}
       <div className="relative z-20">

@@ -22,9 +22,9 @@
     margin-right: 5px;
 
     }
-    .navigation{
-      display: none;
-    }
+    .nav-controls > .navigation{
+  display: none;
+}
     /* when menu is toggled open (via JS), show navigation as dropdown */
     .navigation.open{
       display: flex !important;
@@ -39,26 +39,24 @@
       box-shadow: 0 8px 24px rgba(0,0,0,0.6);
       z-index: 60;
       min-width: 160px;
+      
     }
     /* ensure dropdown appears above background videos and overlays */
     .nav-controls{position: relative; z-index: 99999}
     .nav-controls .navigation.open{position: absolute; top: calc(100% + 8px); right: 0; z-index: 100000}
     /* portal dropdown (rendered at document.body) should be fixed near top-right */
     .mobile-portal{
-      position: fixed;
+      position: absolute;
       top: 64px;
       right: 20px;
       z-index: 200000;
+      
     }
     /* dropdown behaviour: open downward, allow scrolling if many items, add subtle animation */
     .navigation.open{
-      transform-origin: top right;
-      animation: dropdownDown 180ms cubic-bezier(.2,.9,.2,1) both;
-      min-width: 180px;
-      max-width: 260px;
-      max-height: 60vh;
-      overflow: auto;
-    }
+  animation: dropdownDown 180ms cubic-bezier(.2,.9,.2,1) both;
+  will-change: transform;
+}
 
     @keyframes dropdownDown {
       from {
@@ -75,7 +73,7 @@
       border-radius: 6px;
     }
     .navigation.open a:hover{
-      background: rgba(255,255,255,0.03);
+      background: rgba(172, 24, 24, 0.03);
     }
     .threedot{
         display:block !important;
@@ -229,5 +227,33 @@ width: 80%;
 margin-left: 50px;
 margin-right:auto ;
 }
-
+.videoplay {
+  position: absolute !important;
+  width: 100%;
+  height: 100%;
+  
+  /* 1. Makes the video darker */
+  filter: brightness(0.4) blur(10px); 
+  
+  /* 2. Corrected opacity syntax */
+  
 }
+
+.videoplay2{
+  display: none;
+}
+.navigation a{
+  position: relative;
+}
+.navigation.open a{
+  display: inline-block;
+  width: 100%;
+}
+.nav-link:hover::after {
+    width: 25% !important;
+    background: #388;
+
+  }
+}
+
+

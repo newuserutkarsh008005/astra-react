@@ -6,8 +6,11 @@ function VideoBackground2() {
       loop
       playsInline
       className="
-        absolute inset-0
-        w-full h-full
+videoplay2
+        fixed
+        inset-0
+        w-full
+        h-full
         object-cover
         z-0
       "

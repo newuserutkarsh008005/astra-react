@@ -9,6 +9,7 @@ function VideoBackground() {
       loop
       playsInline
       className="
+      videoplay
         fixed
         inset-0
         w-full
