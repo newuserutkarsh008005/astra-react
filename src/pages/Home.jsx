@@ -31,15 +31,18 @@ function Home() {
 
       {/* Background Video */}
       <video
-      ref={videoRef}
-        className="absolute top-0 left-0 w-full h-full object-cover"
-        autoPlay
-        loop
-        muted
-        playsInline
-      >
-        <source src="./public/Videos/video.mp4" type="video/mp4" />
-      </video>
+  ref={videoRef}
+  className="absolute top-0 left-0 w-full h-full object-cover"
+  autoPlay
+  loop
+  muted
+  playsInline
+>
+  <source
+    src="https://res.cloudinary.com/dehj18zcx/video/upload/v1779959160/video_e12f67.mp4"
+    type="video/mp4"
+  />
+</video>
 
       
       
