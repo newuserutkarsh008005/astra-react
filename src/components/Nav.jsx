@@ -21,6 +21,7 @@ console.log(curr);
   `relative inline-block text-gray-200
    hover:text-gray-400
    hover:scale-[1.05]
+   
    transition-all duration-300 ease-in-out
    after:content-[''] after:absolute after:left-0 after:-bottom-1
    after:h-[2px] after:w-0 after:bg-cyan-400
@@ -39,7 +40,7 @@ console.log(curr);
 
         {/* Nav Links + controls */}
         <div className="nav-controls relative flex items-center gap-4 ">
-          <div className={` navigation  flex items-center gap-8 text-amber-100 text-lg  font-extralight   font-stretch-expanded ${open ? 'open' : ''}`}>
+<div className="navigation flex items-center gap-8 text-amber-100 text-lg font-extralight font-stretch-expanded">
             <NavLink to="/home" className={navStyle} onClick={() => setOpen(false)}>
               Home
             </NavLink>

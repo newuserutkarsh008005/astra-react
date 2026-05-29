@@ -10,7 +10,7 @@ function VideoBackground() {
       playsInline
       className="
       videoplay
-        fixed
+        absolute
         inset-0
         w-full
         h-full

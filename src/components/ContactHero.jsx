@@ -1,6 +1,6 @@
 function ContactHero({ setOpen }) {
   return (
-    <main className="flex flex-col md:flex-row min-h-screen items-start md:items-center px-[10%]">
+    <main className="flex flex-col md:flex-row min-h-screen items-start md:items-center px-[10%] ">
       {/* LEFT */}
       <div className="w-full md:w-1/2 flex flex-col gap-1">
         <span className="text-[#d4b99b] text-[0.65rem] tracking-[6px] uppercase mb-12 block">

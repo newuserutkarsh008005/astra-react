@@ -1,5 +1,5 @@
 
-import VideoBackground2 from "../components/VideoBackground";
+import Video2 from "../components/VideoBackground";
 import AboutHero from "../components/AboutHero";
 import AboutSection from "../components/AboutSection";
 import QuoteSection from "../components/QuoteSection";
@@ -10,7 +10,7 @@ function About() {
     <div className="relative min-h-screen overflow-hidden text-white">
 
       {/* VIDEO */}
-      <VideoBackground2 />
+      <Video2/>
 
       {/* OVERLAY */}
 
