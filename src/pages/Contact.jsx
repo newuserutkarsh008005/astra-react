@@ -22,7 +22,7 @@ function Contact() {
   <div className="videoplay2 inset-0 bg-black/60 z-10"></div>
 
   {/* PAGE CONTENT */}
-  <div className="relative z-20">
+  <div className="relative z-20 ">
 
     
 

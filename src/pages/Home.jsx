@@ -5,10 +5,18 @@ import FloatingStats from "../components/FloatingStats";
 import ScrollIndicator from "../components/ScrollIndicator";
 import SpaceScene from "../components/SpaceScene";
 import Chatbot from "../components/Chatbot";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
+import { log } from "three/tsl";
 function Home() {
   const videoRef = useRef(null);
-
+const url="https://version1-1-c962.onrender.com/chat"
+useEffect(function(){
+  async function apis(){
+    const response=await fetch(url);
+    console.log(response)
+  }
+  apis();
+},[])
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.playbackRate = 0.6; // slow motion

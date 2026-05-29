@@ -4,11 +4,11 @@ import StoreHero from "../components/StoreHero";
 function Store() {
   return (
     <PageWrapper>
-    <div className="  h-screen overflow-hidden text-white bg-black">
+    <div className="  h-screen overflow-hidden text-white bg-black ">
 
       {/* Background Image */}
       <img
-        className="absolute  inset-0  w-screen h-screen  opacity-40"
+        className="absolute  inset-0  w-screen h-screen  opacity-40 md:overflow-hidden md:h-full md:object-cover"
         src="/images/newp.png"
         alt="Store Background"
       />

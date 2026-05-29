@@ -2,9 +2,21 @@ import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { RiHeartFill,RiUserLine,RiMenuLine,RiCloseLine } from "@remixicon/react";
-export default function Navbar() {
+export default function Navbar({ curr, setata }) {
  const [open, setOpen] = useState(false);
- 
+ function hello(){
+console.log(curr);
+
+ }
+ //check if error
+ useEffect(() => {
+  if (curr && open) {
+    
+    setOpen(false);
+  }
+}, [curr, open]); // Runs whenever 'curr' or 'open' updates
+
+ hello()
  const navStyle = ({ isActive }) =>
   `relative inline-block text-gray-200
    hover:text-gray-400
@@ -59,7 +71,8 @@ export default function Navbar() {
           </button>
 
           {/* render mobile dropdown into a portal so it sits above videos/overlays */}
-          {open && typeof document !== "undefined" && createPortal(
+          {open  && typeof document !== "undefined" && createPortal(
+            
             <div className="navigation  open mobile-portal" onClick={() => {}}>
               <NavLink to="/home" className={navStyle} onClick={() => setOpen(false)}>Home</NavLink>
               <NavLink to="/explore" className={navStyle} onClick={() => setOpen(false)}>Explore</NavLink>

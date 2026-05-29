@@ -2,27 +2,28 @@ function ContactFormPanel({ open, setOpen }) {
   return (
     <div
       className={`
-        fixed
+        absolute
         top-0
         right-0
-        w-[500px]
+        w-full md:w-[500px]
         h-screen
         bg-gray-900
-        border-l
-        border-white/10
-        px-[60px]
-        py-[100px]
+        md:border-l
+        md:border-white/10
+        px-6 md:px-[60px]
+        py-8 md:py-[100px]
         z-[2000]
         transition-all
         duration-700
         ease-in-out
-        mt-20px
         rounded-3xl
-
+        transform
+        md: flex flex-col flex-nowrap overflow-auto 
+        
         ${
           open
-            ? "translate-x-0 opacity-100"
-            : "translate-x-full opacity-0 pointer-events-none"
+            ? "translate-x-0 translate-y-0 opacity-100"
+            : "md:translate-x-full translate-y-full opacity-0 pointer-events-none"
         }
       `}
     >
@@ -32,10 +33,10 @@ function ContactFormPanel({ open, setOpen }) {
         onClick={() => setOpen(false)}
         className="
           absolute
-          top-20
-          right-10
+          top-5
+          right-4
           cursor-pointer
-         text-[#d4b99b]
+          text-[#d4b99b]
           tracking-[2px]
           text-[0.7rem]
           hover:text-white
@@ -47,7 +48,7 @@ function ContactFormPanel({ open, setOpen }) {
 
       {/* HEADING */}
       <h2
-        className="text-6xl mb-12 leading-tight text-[#d4b99b]"
+        className="text-4xl md:text-6xl mb-12 leading-tight text-[#d4b99b]"
         style={{ fontFamily: "'Cormorant Garamond'" }}
       >
         Secure <br />

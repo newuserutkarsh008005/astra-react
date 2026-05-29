@@ -60,7 +60,7 @@ function ExploreCarousel() {
 
       nextSlide();
 
-    }, 3500);
+    }, 2500);
 
     return () => clearInterval(interval);
 
@@ -80,6 +80,11 @@ function ExploreCarousel() {
       prevSlide();
     }
   };
+
+  // card width and gap must match CSS in ExploreCard (min/max width and `gap-8`)
+  const CARD_WIDTH = 320;
+  const GAP = 32; // tailwind gap-8 = 2rem = 32px
+  const slideOffset = currentIndex * (CARD_WIDTH + GAP);
 
   return (
 
@@ -151,20 +156,9 @@ function ExploreCarousel() {
 
           onDragEnd={handleDragEnd}
 
-          className="
-            flex
-            items-center
-            gap-8
-            cursor-grab
-            active:cursor-grabbing
-            px-[20vw]
-          "
+          className="flex items-center gap-8 cursor-grab active:cursor-grabbing px-6 md:px-[20vw]"
 
-          animate={{
-            x: `-${
-              currentIndex * 340
-            }px`
-          }}
+          animate={{ x: `-${slideOffset}px` }}
 
           transition={{
             duration: 0.8,

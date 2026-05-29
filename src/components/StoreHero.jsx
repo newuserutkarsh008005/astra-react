@@ -12,6 +12,8 @@ function StoreHero() {
         justify-center
         text-center
         px-5
+        md:overflow-hidden
+        
       "
     >
 

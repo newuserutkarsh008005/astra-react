@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   Routes,
@@ -14,21 +14,28 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import Store from "./pages/Store";
-
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import PageWrapper from "./components/PageWrapper";
 import Chatbot from "./components/Chatbot";
 
 const App = () => {
-
+const [curr,setata]=useState(true)
   const location = useLocation();
+  function checkopen() {
+    setata(!curr);
+  }
 
+useEffect (function(){
+  
+},[curr]);
   return (
-<PageWrapper>    <div className= "responsive bg-black min-h-screen text-white overflow-hidden">
+<PageWrapper>    <div 
+onClick={checkopen}
+className= "responsive bg-black min-h-screen text-white overflow-hidden">
 
 
-      <Nav />
+      <Nav curr={curr} setata={setata} / >
       <AnimatePresence mode="wait">
 
         <Routes
