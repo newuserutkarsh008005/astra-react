@@ -2,129 +2,130 @@ const services = [
   {
     id: 1,
     category: "Janam Kundli",
-    price: "₹1,499",
     title: "Premium Birth Chart Reading",
-    image: "/images/newp.png",
+    price: "₹1,499",
+    image: "https://picsum.photos/id/1015/800/600",
     description:
-      "Detailed Vedic janam kundli analysis with graha placements, yogas and life-cycle insights prepared by expert astrologers.",
-    more:
-      "Includes lagna analysis, mahadasha timelines, remedies, and personalized consultation notes for career, marriage, and health.",
-    button: "Book Session",
+      "Comprehensive Vedic birth chart analysis covering planetary positions, houses, yogas, and life trends.",
+    terms:
+      "Report delivered within 48 hours. Birth date, time, and place are required. One free clarification included.",
+    button: "Book Now",
   },
 
   {
     id: 2,
     category: "Transit Report",
-    price: "₹999",
     title: "Gochar & Dasha Forecast",
-    image: "/images/galxy.png",
+    price: "₹999",
+    image: "https://picsum.photos/id/1016/800/600",
     description:
-      "Monthly planetary transit and dasha predictions based on your rashi and nakshatra.",
-    more:
-      "Covers Saturn, Jupiter, Rahu-Ketu movement effects with practical upayas.",
+      "Monthly and yearly transit predictions based on current planetary movements and mahadasha periods.",
+    terms:
+      "Forecast is personalized and non-refundable after delivery. Valid for one individual only.",
     button: "View Forecast",
   },
 
   {
     id: 3,
     category: "Matchmaking",
-    price: "₹2,199",
     title: "Kundli Milan Premium",
-    image: "/images/image.png",
+    price: "₹2,199",
+    image: "https://picsum.photos/id/1025/800/600",
     description:
-      "Advanced gun milan compatibility with mangal dosha review and harmony score.",
-    more:
-      "Includes 36-guna breakdown and personalized compatibility report.",
+      "Detailed compatibility analysis with guna matching, mangal dosha evaluation, and relationship insights.",
+    terms:
+      "Both partners' birth details are mandatory. Report delivered within 72 hours.",
     button: "Check Match",
   },
+
   {
     id: 4,
     category: "Career Guidance",
-    price: "₹1,299",
     title: "Career & Job Forecast",
-    image: "/images/career.png",
+    price: "₹1,299",
+    image: "https://picsum.photos/id/1035/800/600",
     description:
-      "Personalized career roadmap highlighting favorable job-change windows and strengths based on your horoscope.",
-    more:
-      "Includes timing for promotions, best industries, interview success windows, and remedial tips to enhance prospects.",
+      "Career-oriented horoscope reading highlighting growth periods, job changes, and suitable professions.",
+    terms:
+      "Recommendations are advisory in nature and should not replace professional career counseling.",
     button: "Get Advice",
   },
 
   {
     id: 5,
     category: "Education",
-    price: "₹899",
     title: "Education & Exam Insights",
-    image: "/images/education.png",
+    price: "₹899",
+    image: "https://picsum.photos/id/1040/800/600",
     description:
-      "Study-plan and examination-timing analysis tailored to students and competitive exam aspirants.",
-    more:
-      "Covers subject strengths, peak study periods, auspicious exam dates, and supportive remedial measures.",
+      "Astrological guidance for students covering study patterns, exam timing, and academic strengths.",
+    terms:
+      "Suitable for school, college, and competitive exam students. Personalized report only.",
     button: "View Report",
   },
 
   {
     id: 6,
     category: "Health",
-    price: "₹799",
     title: "Health & Wellness Forecast",
-    image: "/images/health.png",
+    price: "₹799",
+    image: "https://picsum.photos/id/1050/800/600",
     description:
-      "Astrological health overview identifying potential vulnerabilities and times to be extra cautious.",
-    more:
-      "Includes lifestyle suggestions, preventive upayas, and best timings for medical procedures or check-ups.",
+      "Planetary influence analysis related to health, wellness routines, and preventive guidance.",
+    terms:
+      "This service is not medical advice and should not replace consultation with healthcare professionals.",
     button: "Read More",
   },
 
   {
     id: 7,
     category: "Finance",
-    price: "₹1,099",
     title: "Wealth & Finance Report",
-    image: "/images/finance.png",
+    price: "₹1,099",
+    image: "https://picsum.photos/id/1060/800/600",
     description:
-      "Insightful forecast of income cycles, investment-friendly periods, and financial risk windows.",
-    more:
-      "Provides monthly cashflow trends, long-term wealth planning pointers, and remedial actions for monetary stability.",
+      "Financial trend analysis covering income opportunities, investments, and wealth-building periods.",
+    terms:
+      "For informational purposes only. Not intended as professional financial or investment advice.",
     button: "See Forecast",
   },
 
   {
     id: 8,
     category: "Remedies",
-    price: "₹499",
     title: "Personalized Remedies",
-    image: "/images/remedies.png",
+    price: "₹499",
+    image: "https://picsum.photos/id/1070/800/600",
     description:
-      "Tailored mantra, gemstone and simple home remedy recommendations based on your chart.",
-    more:
-      "Practical, low-effort upayas with timing and materials listed for immediate implementation.",
+      "Customized remedies including mantras, gemstones, donations, and spiritual practices.",
+    terms:
+      "Results may vary by individual. Remedies are optional recommendations and not guarantees.",
     button: "Get Remedies",
   },
 
   {
     id: 9,
     category: "Vastu",
-    price: "₹1,499",
     title: "Vastu Consultation",
-    image: "/images/vastu.png",
+    price: "₹1,499",
+    image: "https://picsum.photos/id/1080/800/600",
     description:
-      "Home or office Vastu suggestions aligned with your horoscope to improve harmony and success.",
-    more:
-      "Includes layout recommendations, room-specific fixes, color advice, and small changes with big impact.",
+      "Residential and commercial vastu recommendations for improved harmony and productivity.",
+    terms:
+      "Property layout or photographs may be required for accurate analysis.",
     button: "Book Vastu",
   },
 
   {
     id: 10,
     category: "Naming",
-    price: "₹699",
     title: "Name & Nakshatra Report",
-    image: "/images/namkaran.png",
+    price: "₹699",
+    image: "https://picsum.photos/id/1090/800/600",
     description:
-      "Baby naming and name-change suggestions matched to nakshatra, numerology and sound harmony.",
-    more:
-      "Provides a shortlist of auspicious names, meanings, numerological compatibility, and recommended naming time.",
+      "Auspicious naming suggestions based on nakshatra, numerology, and traditional Vedic principles.",
+    terms:
+      "Includes up to 20 recommended names with meanings and compatibility insights.",
     button: "Get Names",
   },
 ];

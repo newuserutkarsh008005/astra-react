@@ -270,5 +270,10 @@ margin-right:auto ;
 }
 
 }
+.swiper-slide .card {
+  transition: transform 0.3s ease;
+}
 
-
+.swiper-slide-active .card:hover {
+  transform: scale(1.1);
+}
