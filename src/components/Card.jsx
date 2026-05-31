@@ -6,7 +6,7 @@ import React from 'react'
     <div className="flex justify-center pt-6">
      <div
   className={`w-80 overflow-hidden rounded-2xl bg-white shadow-lg transition-transform ${
-    isActive ? "scale-120" : "scale-100"
+    isActive ? "scale-110" : "scale-100"
   }`}
 >
         <div className="h-56 overflow-hidden">
