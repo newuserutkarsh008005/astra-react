@@ -16,6 +16,13 @@
 .videfor{
     display: none;
 }
+.storei{
+  display: none;
+  
+
+}
+
+
 @media (max-width:800px) {
     .threedot{
         display:block !important;
@@ -254,6 +261,14 @@ margin-right:auto ;
     background: #388;
 
   }
+  .storeimage{
+  display: none;
+
+}
+.storei{
+  display:block;
+}
+
 }
 
 

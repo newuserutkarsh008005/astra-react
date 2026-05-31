@@ -8,10 +8,16 @@ function Store() {
 
       {/* Background Image */}
       <img
-        className="absolute  inset-0  w-screen h-screen  opacity-40 md:overflow-hidden md:h-full md:object-cover"
+        className=" storeimage  absolute  inset-0  w-screen h-screen  opacity-40 md:overflow-hidden md:h-full md:object-cover"
         src="/images/newp.png"
         alt="Store Background"
       />
+      <img
+        className=" storei  absolute  inset-0  w-screen h-screen  opacity-40 md:overflow-hidden md:h-full md:object-cover"
+        src="/images/space.jpg"
+        alt="Store Background"
+      />
+
 
       {/* Dark Overlay */}
 
