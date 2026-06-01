@@ -3,10 +3,10 @@ import React from 'react'
 
     const Card = ({ elem ,isActive}) => {
   return (
-    <div className="flex justify-center pt-6">
+    <div className="flex justify-center pt-6  pb-8">
      <div
   className={`w-80 overflow-hidden rounded-2xl bg-white shadow-lg transition-transform ${
-    isActive ? "scale-110" : "scale-100"
+    isActive ? "scale-110" : "scale-100 opacity-60"
   }`}
 >
         <div className="h-56 overflow-hidden">
