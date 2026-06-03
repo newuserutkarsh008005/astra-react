@@ -21,6 +21,7 @@ import Chatbot from "./components/Chatbot";
 import Privacy from "./pages/Privacy";
 import RefundPolicy from "./pages/RefundPolicy";
 import Terms from "./pages/Terms";
+import CancellationPolicy from "./pages/CancellationPolicy";
 
 const App = () => {
 const [curr,setata]=useState(true)
@@ -79,6 +80,7 @@ className= "responsive bg-black min-h-screen text-white overflow-hidden">
 <Route path="/privacy" element={<Privacy />} />
 <Route path="/refund" element={<RefundPolicy />} />
 <Route path="/terms" element={<Terms />} />
+<Route path="/cancellation-policy" element={<CancellationPolicy />} />
 
         </Routes>
 
