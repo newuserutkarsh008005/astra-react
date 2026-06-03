@@ -18,6 +18,9 @@ import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import PageWrapper from "./components/PageWrapper";
 import Chatbot from "./components/Chatbot";
+import Privacy from "./pages/Privacy";
+import RefundPolicy from "./pages/RefundPolicy";
+import Terms from "./pages/Terms";
 
 const App = () => {
 const [curr,setata]=useState(true)
@@ -73,7 +76,12 @@ className= "responsive bg-black min-h-screen text-white overflow-hidden">
             element={<Store />}
           />
 
+<Route path="/privacy" element={<Privacy />} />
+<Route path="/refund" element={<RefundPolicy />} />
+<Route path="/terms" element={<Terms />} />
+
         </Routes>
+
 
       </AnimatePresence>
 

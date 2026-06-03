@@ -16,33 +16,33 @@ function ContactHero({ setOpen }) {
             className="text-4xl md:text-5xl font-light text-[#ada8a3] mb-0"
             style={{ fontFamily: "'Cormorant Garamond'" }}
           >
-            +44 20 7946 0128
+            +91 9334327043
           </h3>
         </div>
 
         <div className="mb-8 md:mb-16">
           <span className="text-[0.7rem] text-[#d4b99b] uppercase tracking-[2px] block mb-3">
-            Digital Envoy
+            Astra 
           </span>
 
           <h3
             className="text-4xl md:text-5xl font-light text-[#ada8a3]"
             style={{ fontFamily: "'Cormorant Garamond'" }}
           >
-            concierge@astra.io
+            utkarshprakash081105@gmail.com
           </h3>
         </div>
 
         <div className="mb-8 md:mb-16">
           <span className="text-[0.7rem] text-[#d4b99b] uppercase tracking-[2px] block mb-3">
-            London Studio
+            Lucknow
           </span>
 
           <h3
             className="text-4xl md:text-5xl font-light text-[#ada8a3]"
             style={{ fontFamily: "'Cormorant Garamond'" }}
           >
-            Mayfair, W1K 2HB
+            NBSC 226012
           </h3>
         </div>
       </div>
@@ -57,7 +57,7 @@ function ContactHero({ setOpen }) {
         </button>
 
         <p className="mt-8 text-[0.7rem] tracking-[2px] text-[#d4b99b]">
-          EST. 1998 // LONDON
+          EST. 2026//Lucknow
         </p>
       </div>
     </main>
