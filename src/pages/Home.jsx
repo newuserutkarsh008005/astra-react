@@ -66,8 +66,8 @@ useEffect(function(){
   playsInline
 >
   <source
-    src="https://res.cloudinary.com/dehj18zcx/video/upload/v1779959160/video_e12f67.mp4"
-    type="video/mp4"
+ src="https://res.cloudinary.com/dehj18zcx/video/upload/v1780830253/newvideo_olhwr2.mp4"
+type="video/mp4"
   />
 </video>
 
