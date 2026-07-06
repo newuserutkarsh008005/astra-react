@@ -54,9 +54,9 @@ const ServiceDetails = () => {
   };
   
     const data = await axios.post(
-      "https://astra-backend-live-ver1.onrender.com/service/create_order",
-      tid,
-    );
+  "https://astra-backend-live-ver1.onrender.com/service/create_order",
+  tid
+);
     
     const options = {
       key: import.meta.env.VITE_RAZORPAY_KEY_ID,
