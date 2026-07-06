@@ -18,7 +18,9 @@ const ServiceDetails = () => {
     const fetchService = async () => {
       try {
         const res = await axios.get(`https://astra-backend-live-ver1.onrender.com/services/${id}`);
-
+        
+        
+        
         setService(res.data.data);
       } catch (error) {
         console.log(error);
@@ -52,7 +54,7 @@ const ServiceDetails = () => {
   };
   
     const data = await axios.post(
-      "https://astra-backend-live-ver1.onrender.com/create_order",
+      "https://astra-backend-live-ver1.onrender.com/service/create_order",
       tid,
     );
     
@@ -82,6 +84,7 @@ const ServiceDetails = () => {
             "https://astra-backend-live-ver1.onrender.com/service/verify_payment",
             t_resp,
           );
+console.log("Option yaha hai ",options);
 
           console.log("BACKEND RESPONSE");
           console.log(datav.data);
@@ -91,6 +94,7 @@ const ServiceDetails = () => {
         }
       },
     };
+    console.log("kya bolte ho",window.Razorpay);
     const rzp = new window.Razorpay(options);
     rzp.open();
   }
