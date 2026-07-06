@@ -106,6 +106,7 @@ function HomeHero() {
           Deep-space astrological intelligence
           merging ancient cosmic systems with
           immersive digital observatory experiences.
+         
         </motion.p>
 
       </div>

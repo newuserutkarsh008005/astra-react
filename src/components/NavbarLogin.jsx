@@ -7,31 +7,10 @@ import {
   RiMenuLine,
   RiCloseLine,
 } from "@remixicon/react";
-import { useAuth0 } from "@auth0/auth0-react";
-import { log } from "three";
-import { useUser } from "./UserContext";
-
-
-export default function Navbar({ curr, setata }) {
-  const { dbuser } = useUser();
-
-const {
-  loginWithRedirect,
-  logout,
-  isLoading,
-  isAuthenticated,
-  user,
-} = useAuth0();
-
-
-if(isAuthenticated && dbuser){
-console.log("Dbuser is printing",dbuser.id);}
-console.log("AUTH", isAuthenticated);
-console.log("USER", user);
-console.log("DBUSER", dbuser);
-console.log("Loading",isLoading)
-
-const [open, setOpen] = useState(false);
+import { div } from "three/tsl";
+import WelcomeAnimation from "./WelcomeAnimation";
+export default function NavbarLogin({ curr, setata }) {
+  const [open, setOpen] = useState(false);
   function hello() {
     console.log(curr);
   }
@@ -40,7 +19,7 @@ const [open, setOpen] = useState(false);
     if (curr && open) {
       setOpen(false);
     }
-  }, [curr, open]); // Runs whenever 'curr' or 'open' updates
+  }, [curr, open]); 
 
   hello();
   const navStyle = ({ isActive }) =>
@@ -56,22 +35,24 @@ const [open, setOpen] = useState(false);
    hover:after:sm:w-[50%] 
    ${isActive ? "text-cyan-300" : ""}`;
   return (
+    <>
     <nav className="  navmain bg-transparent shadow-lg sticky top-0 z-50 ">
-      <div className="  mainnavigation max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="  mainnavigation max-w-6xl mx-auto px-2 py-4 flex items-center justify-between">
         {/* Logo */}
-        <h1 className="text-4xl tracking-[0.5em] text-[#d5bb93] font-['Cinzel'] hover:scale-110 transition-all ease-in">
+        <h1 className="text-3xl tracking-[0.5em] mr-3 text-[#d5bb93] font-['Cinzel'] hover:scale-110 transition-all ease-in">
           Astra
         </h1>
+       
 
         {/* Nav Links + controls */}
         <div className="nav-controls relative flex items-center gap-4 ">
           <div className="navigation flex items-center gap-8 text-amber-100 text-lg font-extralight font-stretch-expanded">
             <NavLink
-              to="/dashboard"
+              to="/home"
               className={navStyle}
               onClick={() => setOpen(false)}
             >
-              Dashboard
+              Home
             </NavLink>
 
             <NavLink
@@ -95,7 +76,7 @@ const [open, setOpen] = useState(false);
               className={navStyle}
               onClick={() => setOpen(false)}
             >
-              Contact
+              Summary
             </NavLink>
 
             <NavLink
@@ -103,29 +84,8 @@ const [open, setOpen] = useState(false);
               className={navStyle}
               onClick={() => setOpen(false)}
             >
-              About
+            Profile
             </NavLink>
-          </div>
-          <div> 
-          {isLoading ? (
-  <p>Loading...</p>
-) : !isAuthenticated ? (
-  <button onClick={() => loginWithRedirect()}>
-    Login
-  </button>
-) : (
-  <button
-    onClick={() =>
-      logout({
-        logoutParams: {
-          returnTo: window.location.origin,
-        },
-      })
-    }
-  >
-    Logout
-  </button>
-)}
           </div>
           <RiUserLine className="profilepic" />
           <button
@@ -186,5 +146,6 @@ const [open, setOpen] = useState(false);
         </div>
       </div>
     </nav>
+     </>
   );
 }

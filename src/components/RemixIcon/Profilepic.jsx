@@ -2,7 +2,11 @@ import React from 'react'
 
 const Profilepic = () => {
   return (
-    <div>Profilepic</div>
+    <div>
+      <div>
+        
+      </div>
+    </div>
   )
 }
 

@@ -59,7 +59,7 @@ useEffect(function(){
         
   <video
   ref={videoRef}
-  className="absolute top-0 left-0 w-full h-full object-cover"
+  className="fixed top-0 left-0 w-screen h-screen object-cover "
   autoPlay
   loop
   muted
@@ -72,14 +72,14 @@ type="video/mp4"
 </video>
 
           {/* OVERLAY */}
-          <div
+          {/* <div
             className="
             absolute
             inset-0
             bg-black/20
             z-10
           "
-          />
+          /> */}
 
           {/* CONTENT */}
           <div className="relative z-20">

@@ -1,0 +1,70 @@
+.rbc-calendar {
+  background: transparent;
+  color: white;
+}
+
+.rbc-toolbar {
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+}
+
+.rbc-toolbar button {
+  background: rgba(255,255,255,0.05);
+  color: white;
+  border: none;
+  border-radius: 10px;
+}
+
+.rbc-toolbar button:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.rbc-month-view {
+  border: none;
+}
+
+.rbc-header {
+  border: none;
+  color: rgba(255,255,255,0.7);
+  text-transform: uppercase;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.rbc-day-bg {
+  background: transparent;
+}
+
+.rbc-date-cell {
+  color: white;
+}
+
+.rbc-off-range-bg {
+  background: rgba(255,255,255,0.03);
+}
+
+.rbc-today {
+  background: rgba(250,204,21,0.15);
+}
+
+.rbc-event {
+  background: #facc15;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.rbc-event-content {
+  padding: 2px;
+}
+
+.rbc-month-row {
+  border-color: rgba(255,255,255,0.08);
+}
+
+.rbc-day-bg + .rbc-day-bg {
+  border-color: rgba(255,255,255,0.08);
+}
