@@ -1,183 +1,573 @@
+import { useEffect } from "react";
+
 function ContactFormPanel({ open, setOpen }) {
+
+  // Prevent background scrolling while drawer is open
+  useEffect(() => {
+    if (!open) return;
+
+    const previousOverflow = document.body.style.overflow;
+
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [open]);
+
+
+  // Close with Escape
+  useEffect(() => {
+    if (!open) return;
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [open, setOpen]);
+
+
   return (
-    <div
-      className={`
-        absolute
-        top-0
-        right-0
-        w-full md:w-[500px]
-        h-screen
-        bg-gray-900
-        md:border-l
-        md:border-white/10
-        px-6 md:px-[60px]
-        py-8 md:py-[100px]
-        z-[2000]
-        transition-all
-        duration-700
-        ease-in-out
-        rounded-3xl
-        transform
-        md: flex flex-col flex-nowrap overflow-auto 
-        
-        ${
-          open
-            ? "translate-x-0 translate-y-0 opacity-100"
-            : "md:translate-x-full translate-y-full opacity-0 pointer-events-none"
-        }
-      `}
-    >
+    <>
+      {/* =====================================================
+          BACKDROP
+          Starts BELOW navbar
+      ====================================================== */}
 
-      {/* CLOSE BUTTON */}
-      <span
+      <div
         onClick={() => setOpen(false)}
-        className="
-          absolute
-          top-5
-          right-4
-          cursor-pointer
-          text-[#d4b99b]
-          tracking-[2px]
-          text-[0.7rem]
-          hover:text-white
-          transition
-        "
-      >
-        CLOSE // ✕
-      </span>
+        className={`
+          fixed
+          top-[72px]
+          bottom-0
+          left-0
+          right-0
 
-      {/* HEADING */}
-      <h2
-        className="text-4xl md:text-6xl mb-12 leading-tight text-[#d4b99b]"
-        style={{ fontFamily: "'Cormorant Garamond'" }}
-      >
-        Secure <br />
-        <i>Communication</i>
-      </h2>
+          bg-black/50
+          backdrop-blur-[2px]
 
-      {/* NAME FIELD */}
-      <div className="mb-8">
-        <label
-          className="
-            block
-            text-[0.6rem]
-            text-[#d4b99b]
-            uppercase
-            tracking-[2px]
-            mb-3
-          "
-        >
-          Identity
-        </label>
+          z-[999998]
 
-        <input
-          type="text"
-          placeholder="Full Name"
-          className="
-            w-full
-            bg-transparent
-            border-none
-            border-b
-            border-white/10
-            py-4
-            text-white
-            outline-none
-            transition
-            focus:border-[#d4b99b]
-            placeholder:text-white/80
-          "
-        />
-      </div>
-
-      {/* EMAIL FIELD */}
-      <div className="mb-8">
-        <label
-          className="
-            block
-            text-[0.6rem]
-            text-[#d4b99b]
-            uppercase
-            tracking-[2px]
-            mb-3
-          "
-        >
-          Endpoint
-        </label>
-
-        <input
-          type="email"
-          placeholder="Email Address"
-          className="
-            w-full
-            bg-transparent
-            border-none
-            border-b
-            border-white/80
-            py-4
-            text-white
-            outline-none
-            transition
-            focus:border-[#d4b99b]
-            placeholder:text-white/80
-          "
-        />
-      </div>
-
-      {/* MESSAGE FIELD */}
-      <div className="mb-8">
-        <label
-          className="
-            block
-            text-[0.6rem]
-            text-[#d4b99b]
-            uppercase
-            tracking-[2px]
-            mb-3
-          "
-        >
-          Context
-        </label>
-
-        <textarea
-          rows="4"
-          placeholder="Brief details regarding your alignment query..."
-          className="
-            w-full
-            bg-transparent
-            border-none
-            border-b
-            border-white/80
-            py-4
-            text-white
-            outline-none
-            resize-none
-            transition
-            focus:border-[#d4b99b]
-            placeholder:text-white/80
-          "
-        />
-      </div>
-
-      {/* SUBMIT BUTTON */}
-      <button
-        className="
-          w-full
-          border
-          border-[#d4b99b]
-          text-[#d4b99b]
-          py-5
-          uppercase
-          tracking-[4px]
-          text-[0.8rem]
-          transition-all
+          transition-opacity
           duration-500
-          hover:bg-[#d4b99b]
-          hover:text-black
-        "
+
+          ${
+            open
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none"
+          }
+        `}
+      />
+
+
+      {/* =====================================================
+          CONTACT PANEL
+          Starts BELOW navbar
+      ====================================================== */}
+
+      <aside
+        aria-hidden={!open}
+        aria-label="Contact form"
+        className={`
+          fixed
+
+          top-[72px]
+          right-0
+          bottom-0
+
+          z-[999999]
+
+          w-full
+          sm:w-[420px]
+          md:w-[460px]
+          lg:w-[500px]
+
+          bg-[#0b1220]
+
+          border-l
+          border-white/10
+
+          shadow-[-20px_0_80px_rgba(0,0,0,0.45)]
+
+          flex
+          flex-col
+
+          overflow-hidden
+
+          transition-transform
+          duration-700
+          ease-[cubic-bezier(0.22,1,0.36,1)]
+
+          ${
+            open
+              ? "translate-x-0"
+              : "translate-x-full pointer-events-none"
+          }
+        `}
       >
-        Transmit
-      </button>
-    </div>
+
+        {/* ===================================================
+            HEADER
+        ==================================================== */}
+
+        <div
+          className="
+            relative
+            shrink-0
+
+            px-6
+            sm:px-8
+            md:px-10
+
+            py-5
+
+            border-b
+            border-white/[0.08]
+          "
+        >
+
+          <div
+            className="
+              flex
+              items-center
+              justify-between
+            "
+          >
+
+            <p
+              className="
+                text-[9px]
+                sm:text-[10px]
+
+                uppercase
+                tracking-[0.35em]
+
+                text-[#d4b99b]/70
+              "
+            >
+              ASTRA // CONTACT
+            </p>
+
+
+            <button
+              type="button"
+              onClick={() => setOpen(false)}
+              aria-label="Close contact form"
+              className="
+                group
+
+                flex
+                items-center
+                gap-2
+
+                text-[9px]
+                sm:text-[10px]
+
+                uppercase
+                tracking-[0.25em]
+
+                text-[#d4b99b]
+
+                hover:text-white
+
+                transition-colors
+              "
+            >
+              <span>CLOSE</span>
+
+              <span
+                className="
+                  text-sm
+                  group-hover:rotate-90
+                  transition-transform
+                  duration-300
+                "
+              >
+                ×
+              </span>
+            </button>
+
+          </div>
+
+        </div>
+
+
+        {/* ===================================================
+            FORM CONTENT
+        ==================================================== */}
+
+        <div
+          className="
+            flex-1
+            min-h-0
+
+            overflow-y-auto
+            overscroll-contain
+
+            px-6
+            sm:px-8
+            md:px-10
+
+            py-8
+            sm:py-10
+            md:py-12
+
+            pb-10
+          "
+        >
+
+          {/* =================================================
+              HEADING
+          ================================================= */}
+
+          <div className="mb-10 sm:mb-12">
+
+            <p
+              className="
+                mb-4
+
+                text-[9px]
+                sm:text-[10px]
+
+                uppercase
+                tracking-[0.4em]
+
+                text-[#d4b99b]/70
+              "
+            >
+              Secure Channel
+            </p>
+
+            <h2
+              className="
+                text-4xl
+                sm:text-5xl
+                md:text-6xl
+
+                leading-[0.95]
+
+                text-[#d4b99b]
+              "
+              style={{
+                fontFamily: "'Cormorant Garamond', serif",
+              }}
+            >
+              Secure
+              <br />
+
+              <i>Communication</i>
+            </h2>
+
+            <div
+              className="
+                mt-6
+
+                w-16
+                h-px
+
+                bg-[#d4b99b]/60
+              "
+            />
+
+          </div>
+
+
+          {/* =================================================
+              FORM
+          ================================================= */}
+
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+            }}
+            className="
+              space-y-8
+              sm:space-y-10
+            "
+          >
+
+            {/* NAME */}
+
+            <div>
+
+              <label
+                htmlFor="contact-name"
+                className="
+                  block
+                  mb-3
+
+                  text-[9px]
+                  sm:text-[10px]
+
+                  uppercase
+                  tracking-[0.3em]
+
+                  text-[#d4b99b]
+                "
+              >
+                Identity
+              </label>
+
+              <input
+                id="contact-name"
+                type="text"
+                placeholder="Full Name"
+                autoComplete="name"
+                className="
+                  w-full
+
+                  bg-transparent
+
+                  border-0
+                  border-b
+                  border-white/15
+
+                  px-0
+                  py-3
+
+                  text-base
+                  sm:text-lg
+
+                  text-white
+
+                  placeholder:text-white/45
+
+                  outline-none
+
+                  focus:border-[#d4b99b]
+
+                  transition-colors
+                  duration-300
+                "
+              />
+
+            </div>
+
+
+            {/* EMAIL */}
+
+            <div>
+
+              <label
+                htmlFor="contact-email"
+                className="
+                  block
+                  mb-3
+
+                  text-[9px]
+                  sm:text-[10px]
+
+                  uppercase
+                  tracking-[0.3em]
+
+                  text-[#d4b99b]
+                "
+              >
+                Endpoint
+              </label>
+
+              <input
+                id="contact-email"
+                type="email"
+                placeholder="Email Address"
+                autoComplete="email"
+                className="
+                  w-full
+
+                  bg-transparent
+
+                  border-0
+                  border-b
+                  border-white/15
+
+                  px-0
+                  py-3
+
+                  text-base
+                  sm:text-lg
+
+                  text-white
+
+                  placeholder:text-white/45
+
+                  outline-none
+
+                  focus:border-[#d4b99b]
+
+                  transition-colors
+                  duration-300
+                "
+              />
+
+            </div>
+
+
+            {/* MESSAGE */}
+
+            <div>
+
+              <label
+                htmlFor="contact-message"
+                className="
+                  block
+                  mb-3
+
+                  text-[9px]
+                  sm:text-[10px]
+
+                  uppercase
+                  tracking-[0.3em]
+
+                  text-[#d4b99b]
+                "
+              >
+                Context
+              </label>
+
+              <textarea
+                id="contact-message"
+                rows={5}
+                placeholder="Brief details regarding your alignment query..."
+                className="
+                  w-full
+
+                  bg-transparent
+
+                  border-0
+                  border-b
+                  border-white/15
+
+                  px-0
+                  py-3
+
+                  text-base
+
+                  leading-relaxed
+
+                  text-white
+
+                  placeholder:text-white/45
+
+                  outline-none
+
+                  resize-none
+
+                  focus:border-[#d4b99b]
+
+                  transition-colors
+                  duration-300
+                "
+              />
+
+            </div>
+
+
+            {/* SUBMIT */}
+
+            <div className="pt-2">
+
+              <button
+                type="submit"
+                className="
+                  group
+
+                  relative
+
+                  w-full
+
+                  overflow-hidden
+
+                  border
+                  border-[#d4b99b]/70
+
+                  py-4
+                  sm:py-5
+
+                  text-[#d4b99b]
+
+                  text-[10px]
+                  sm:text-xs
+
+                  uppercase
+                  tracking-[0.35em]
+
+                  transition-all
+                  duration-500
+                "
+              >
+
+                <span
+                  className="
+                    absolute
+                    inset-0
+
+                    origin-left
+                    scale-x-0
+
+                    bg-[#d4b99b]
+
+                    group-hover:scale-x-100
+
+                    transition-transform
+                    duration-500
+                    ease-out
+                  "
+                />
+
+                <span
+                  className="
+                    relative
+                    z-10
+
+                    group-hover:text-[#080c14]
+
+                    transition-colors
+                    duration-500
+                  "
+                >
+                  Transmit
+                </span>
+
+              </button>
+
+            </div>
+
+
+            {/* FOOTNOTE */}
+
+            <p
+              className="
+                pt-2
+                pb-4
+
+                text-[9px]
+
+                leading-relaxed
+
+                tracking-[0.12em]
+
+                text-white/35
+
+                uppercase
+              "
+            >
+              Your communication remains private
+              and protected.
+            </p>
+
+          </form>
+
+        </div>
+
+      </aside>
+    </>
   );
 }
 

@@ -1,29 +1,22 @@
 import { motion } from "framer-motion";
 
 function PageWrapper({ children }) {
-
   return (
-
     <motion.div
       initial={{
         opacity: 0,
-        y: 40,
       }}
       animate={{
         opacity: 1,
-        y: 0,
       }}
       exit={{
         opacity: 0,
-        y: -40,
       }}
       transition={{
-        duration: 0.8,
+        duration: 0.5,
       }}
     >
-
       {children}
-
     </motion.div>
   );
 }

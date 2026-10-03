@@ -5,7 +5,7 @@ const UserHome = () => {
   const videoRef = useRef(null);
 
   return (
-    <div className="relative w-full h-fullw ">
+    <div className="relative w-fit h-fullw ">
       
       <video
   className="fixed inset-0 w-full h-full object-cover brightness-50 "

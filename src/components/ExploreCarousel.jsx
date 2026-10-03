@@ -20,15 +20,45 @@ import axios from "axios";
 import Card from "./Card";
 const ExploreCarousel = () => {
   const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-useEffect(() => {
-  const fetchServices = async () => {
-    const res = await axios.get("https://astra-backend-live-ver1.onrender.com/services");
-    setServices(res.data.data);
-  };
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const res = await axios.get("https://astra-backend-live-ver1.onrender.com/services");
+        setServices(res.data.data || []);
+      } catch (error) {
+        console.error("Failed to fetch services:", error);
+        setServices([]);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  fetchServices();
-}, []);
+    fetchServices();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex h-screen items-center justify-center">
+        <div className="flex items-center gap-3 rounded-full border border-[#D4AF37]/20 bg-[#111827] px-5 py-3 text-zinc-200 shadow-lg shadow-[#D4AF37]/5">
+          <div className="h-5 w-5 animate-spin rounded-full border-2 border-[#D4AF37]/30 border-t-[#D4AF37]" />
+          <span>Loading services...</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (services.length === 0) {
+    return (
+      <div className="flex h-screen items-center justify-center px-4 text-center">
+        <div className="rounded-2xl border border-white/10 bg-white/5 px-8 py-10">
+          <p className="text-lg text-zinc-300">No services available.</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
    <div className="h-screen flex items-center justify-center">
 
@@ -40,10 +70,10 @@ useEffect(() => {
           centeredSlides={true}
           loop={true}
           slidesPerView={3}
-          spaceBetween={30}
+          spaceBetween={40}
           navigation
           autoplay={{
-            delay: 3000,
+            delay: 2000,
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
           }}
@@ -76,7 +106,7 @@ useEffect(() => {
           grabCursor={true}
           loop={true}
           autoplay={{
-            delay: 2500,
+            delay: 2000,
             disableOnInteraction: false,
             pauseOnMouseEnter:true,
           }}

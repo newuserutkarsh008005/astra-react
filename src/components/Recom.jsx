@@ -36,37 +36,57 @@ useEffect(() => {
    <div className="h-fit flex items-center justify-center bg-transparent">
 
       {/* ================= DESKTOP ================= */}
-      <div className="hidden md:block w-full h-fit bg-transparent">
-       <Swiper
-  modules={[EffectCreative, Autoplay]}
-  effect="creative"
-  creativeEffect={{
-    prev: {
-      translate: [0, 0, -400],
-    },
-    next: {
-      translate: ["100%", 0, 0],
-    },
-  }}
-  grabCursor={true}
-  loop={true}
-  autoplay={{
-    delay: 2500,
-    disableOnInteraction: false,
-    pauseOnMouseEnter: true,
-  }}
-  className="w-full"
->
-          {services.map((elem) => (
-            <SwiperSlide key={elem.id}>
-              {({isActive})=>(
-                <Card elem={elem} isActive={isActive} />
-              )}
-            
-              
-            </SwiperSlide>
-          ))}
-        </Swiper>
+      <div className="hidden md:block w-full h-fit bg-transparent relative">
+        <button
+          className="custom-prev absolute left-0 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/40 text-2xl text-white shadow-lg backdrop-blur-sm transition hover:bg-black/60"
+          aria-label="Previous service"
+          type="button"
+        >
+          ‹
+        </button>
+
+        <button
+          className="custom-next absolute right-0 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/40 text-2xl text-white shadow-lg backdrop-blur-sm transition hover:bg-black/60"
+          aria-label="Next service"
+          type="button"
+        >
+          ›
+        </button>
+
+        <div className="px-12">
+          <Swiper
+            modules={[EffectCreative, Autoplay, Navigation]}
+            effect="creative"
+            creativeEffect={{
+              prev: {
+                translate: [0, 0, -400],
+              },
+              next: {
+                translate: ["100%", 0, 0],
+              },
+            }}
+            navigation={{
+              prevEl: ".custom-prev",
+              nextEl: ".custom-next",
+            }}
+            grabCursor={true}
+            loop={true}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            className="w-full"
+          >
+            {services.map((elem) => (
+              <SwiperSlide key={elem.id}>
+                {({ isActive }) => (
+                  <Card elem={elem} isActive={isActive} />
+                )}
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </div>
 
       {/* ================= MOBILE ================= */}

@@ -1,13 +1,26 @@
-import { div } from "three/src/nodes/math/OperatorNode.js"
+import { useEffect, useRef } from "react";
 
 function VideoBackground() {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const startDelay = window.setTimeout(() => {
+      if (videoRef.current) {
+        videoRef.current.playbackRate = 0.8;
+        videoRef.current.play().catch(() => {});
+      }
+    }, 500);
+
+    return () => window.clearTimeout(startDelay);
+  }, []);
+
   return (
-    
     <video
-      autoPlay
+      ref={videoRef}
       muted
       loop
       playsInline
+      preload="auto"
       className="
       videoplay
         absolute
@@ -16,11 +29,10 @@ function VideoBackground() {
         h-full
         object-cover
         z-0
-        opacity-40
       "
     >
       <source
-        src="https://res.cloudinary.com/dehj18zcx/video/upload/q_auto/f_auto/v1775924891/Galaxy_ku3490.mp4"
+        src="https://res.cloudinary.com/dehj18zcx/video/upload/v1790948763/gemini_generated_video_6b1c20e0_hiondi.mp4"
         type="video/mp4"
       />
     </video>

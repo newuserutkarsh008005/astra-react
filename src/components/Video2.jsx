@@ -1,26 +1,66 @@
-function VideoBackground2() {
+function VideoBackground() {
   return (
-    <video
-      autoPlay
-      muted
-      loop
-      playsInline
+    <div
       className="
-videoplay2
-        fixed
+        absolute
         inset-0
         w-full
         h-full
-        object-cover
-        z-0
+        overflow-hidden
+        bg-[#02070d]
       "
     >
-      <source
-        src="https://res.cloudinary.com/dehj18zcx/video/upload/q_auto/f_auto/v1775924870/09_vkda2d.mp4"
-        type="video/mp4"
+
+      {/* =====================================================
+          DESKTOP VIDEO
+      ====================================================== */}
+
+      <video
+        className="
+          absolute
+          inset-0
+
+          hidden
+          md:block
+
+          w-full
+          h-full
+
+          object-cover
+          object-center
+
+          scale-[1.02]
+        "
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+      >
+        <source
+          src="https://res.cloudinary.com/dehj18zcx/video/upload/v1780830253/newvideo_olhwr2.mp4"
+          type="video/mp4"
+        />
+      </video>
+
+
+      {/* =====================================================
+          MOBILE BACKGROUND
+
+          No video on mobile.
+      ====================================================== */}
+
+      <div
+        className="
+          absolute
+          inset-0
+          md:hidden
+          bg-[#02070d]
+        "
       />
-    </video>
+
+    </div>
   );
 }
 
-export default VideoBackground2;
+export default VideoBackground;

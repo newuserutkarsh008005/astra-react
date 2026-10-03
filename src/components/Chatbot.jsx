@@ -125,20 +125,22 @@ const Chatbot = () => {
   }
 
 return (
-    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[999999]">
-
+    <>
       {/* Toggle Button */}
       {!open && (
         <button
           onClick={() => setOpen(true)}
           className="
-            w-14 h-14 sm:w-16 sm:h-16
+            fixed
+            bottom-4 right-4 sm:bottom-6 sm:right-6
+            w-14 h-14 sm:w-16 sm:h-16 
             rounded-full
             bg-gradient-to-r from-purple-600 to-blue-600
             text-white text-2xl
             shadow-2xl
             hover:scale-110 transition-all
             flex items-center justify-center
+            z-[999999]
           "
         >
           ✦
@@ -149,6 +151,8 @@ return (
       {open && (
         <div
           className="
+            fixed
+            bottom-4 right-4 sm:bottom-6 sm:right-6
             w-[90vw] max-w-[360px]
             h-[75vh] sm:h-[600px]
             bg-black/40 backdrop-blur-xl
@@ -157,6 +161,7 @@ return (
             shadow-2xl
             overflow-hidden
             flex flex-col
+            z-[999999]
           "
         >
 
@@ -276,6 +281,7 @@ return (
                 className="
                   w-10 h-10 sm:w-12 sm:h-12
                   rounded-full
+                  
                   bg-gradient-to-r from-purple-500 to-blue-500
                   text-white font-bold
                   hover:scale-105 transition-all
@@ -290,8 +296,7 @@ return (
 
         </div>
       )}
-
-    </div>
+    </>
   );
 };
 

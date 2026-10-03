@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import HomeAnimation from "./HomeAnimation";
 
 function HomeHero() {
 
@@ -9,7 +10,11 @@ function HomeHero() {
         min-h-screen
         flex
         items-center
-        px-[10%]
+        px-6
+        pt-24
+        sm:px-[8%]
+        md:px-[10%]
+        md:pt-0
       "
     >
 
@@ -33,11 +38,14 @@ function HomeHero() {
           }}
 
           className="
-            text-[0.7rem]
-            tracking-[0.6em]
+            text-[0.58rem]
+            sm:text-[0.7rem]
+            tracking-[0.35em]
+            sm:tracking-[0.6em]
             uppercase
             text-[#d4b99b]
-            mb-6
+            mb-5
+            sm:mb-6
           "
         >
           Sector_04 // Deep_Field
@@ -52,7 +60,7 @@ function HomeHero() {
           }}
 
           animate={{
-            opacity: 1,
+            opacity: 2,
             y: 0,
           }}
 
@@ -61,9 +69,10 @@ function HomeHero() {
           }}
 
           className="
-            text-[5rem]
+            text-[3.2rem]
+            sm:text-[4.25rem]
             md:text-[7rem]
-            leading-none
+            leading-[0.9]
             font-light
           "
 
@@ -96,16 +105,16 @@ function HomeHero() {
           }}
 
           className="
-            mt-8
-            max-w-[600px]
-            text-white/70
-            leading-[2]
-            text-[1rem]
+            mt-6
+            sm:mt-8
+            max-w-[800px]
+            text-white/90
+            leading-[1.7]
+            text-[1.2rem]
+            sm:text-[1rem]
           "
         >
-          Deep-space astrological intelligence
-          merging ancient cosmic systems with
-          immersive digital observatory experiences.
+          <HomeAnimation />
          
         </motion.p>
 
