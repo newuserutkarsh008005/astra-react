@@ -358,3 +358,21 @@ margin-right:auto ;
   border-radius: 999px;
   background: #d4b99b;
 }
+
+.recom-mobile-swiper .swiper-pagination {
+  bottom: 0 !important;
+}
+
+.recom-mobile-swiper .swiper-pagination-bullet {
+  width: 6px;
+  height: 6px;
+  background: rgba(212, 185, 155, 0.45);
+  opacity: 1;
+  transition: width 180ms ease, background-color 180ms ease;
+}
+
+.recom-mobile-swiper .swiper-pagination-bullet-active {
+  width: 18px;
+  border-radius: 999px;
+  background: #d4b99b;
+}
