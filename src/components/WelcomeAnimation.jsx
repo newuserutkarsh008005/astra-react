@@ -42,7 +42,7 @@ const texts = language === "hi" ? [
   const words = texts[cur].split(" ");
 
   return (
-    <div className="flex justify-start px-10 overflow-hidden flex-wrap   h-fit w-3/5 ">
+    <div className="mt-6 flex min-h-[8rem]  w-full flex-wrap content-start justify-start overflow-hidden px-3 sm:mt-0 sm:w-3/5 sm:px-10 md:min-h-[6rem]">
       <div className="flex flex-wrap gap-2 text-2xl font-sans font-medium">
         {words.map((word, index) => (
           <motion.span

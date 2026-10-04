@@ -340,3 +340,21 @@ margin-right:auto ;
 .swiper-slide-active .card:hover {
   transform: scale(1.1);
 }
+
+.explore-mobile-swiper .swiper-pagination {
+  bottom: 0 !important;
+}
+
+.explore-mobile-swiper .swiper-pagination-bullet {
+  width: 6px;
+  height: 6px;
+  background: rgba(212, 185, 155, 0.5);
+  opacity: 1;
+  transition: width 180ms ease, background-color 180ms ease;
+}
+
+.explore-mobile-swiper .swiper-pagination-bullet-active {
+  width: 18px;
+  border-radius: 999px;
+  background: #d4b99b;
+}

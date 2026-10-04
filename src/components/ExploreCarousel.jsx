@@ -5,7 +5,6 @@ import {
   Navigation,
   Pagination,
   EffectCoverflow,
-  EffectCards,
   Autoplay,
 } from "swiper/modules";
 
@@ -13,7 +12,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
-import "swiper/css/effect-cards";
 
 import  { useEffect, useState } from "react";
 import axios from "axios";
@@ -62,7 +60,7 @@ const ExploreCarousel = () => {
   }
 
   return (
-   <div className="h-screen flex items-center justify-center">
+  <div className="flex h-[calc(100svh-5rem)] items-center justify-center md:h-screen">
 
       {/* ================= DESKTOP ================= */}
       <div className="hidden md:block w-full min-h-[500px]">
@@ -101,26 +99,36 @@ const ExploreCarousel = () => {
       </div>
 
       {/* ================= MOBILE ================= */}
-      <div className="block md:hidden w-full px-4">
+      <div className="mx-auto block w-full max-w-md px-4 md:hidden">
+        <div className="mb-3 flex items-end gap-4 border-b border-white/10 pb-3">
+          <div>
+            <p className="text-[0.62rem] uppercase tracking-[0.18em] text-[#d4b99b]">
+              Astra / Curated Services
+            </p>
+            <h2 className="mt-1 text-2xl font-semibold leading-none text-white">
+              {t("Explore")}
+            </h2>
+          </div>
+          <div className="mb-1 h-px flex-1 bg-gradient-to-r from-[#d4b99b]/45 to-transparent" />
+        </div>
         <Swiper
-          modules={[EffectCards, Autoplay]}
-          effect="cards"
-          grabCursor={true}
+          modules={[Pagination]}
+          slidesPerView={1}
+          spaceBetween={16}
+          pagination={{ clickable: true, dynamicBullets: true }}
           loop={true}
-          autoplay={{
-            delay: 2000,
-            disableOnInteraction: false,
-            pauseOnMouseEnter:true,
-          }}
-          className="w-full"
+          className="explore-mobile-swiper w-full pb-8"
         >
-          {services.map((elem) => (
-  <SwiperSlide key={elem.id}>
-    {({ isActive }) => (
-      <Card elem={elem} isActive={isActive} />
-    )}
-  </SwiperSlide>
-))}
+          {services.map((elem, index) => (
+            <SwiperSlide key={elem.id}>
+              <Card
+                elem={elem}
+                isMobile
+                itemNumber={index + 1}
+                serviceCount={services.length}
+              />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
 
