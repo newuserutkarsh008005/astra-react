@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useLanguage } from "./LanguageContext";
 
 function ExploreModal({
 
@@ -6,6 +7,7 @@ function ExploreModal({
   setSelectedService,
 
 }) {
+  const { t } = useLanguage();
 
   if (!selectedService) return null;
 
@@ -113,7 +115,7 @@ function ExploreModal({
 
           {/* CLOSE */}
           <button onClick={() => setSelectedService(null)} className="px-6 py-3 rounded-full border border-[#d4b99b]/30 text-[#d4b99b] hover:bg-[#d4b99b] hover:text-black transition-all">
-            Close
+            {t("Close")}
           </button>
 
         </div>

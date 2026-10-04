@@ -1,4 +1,7 @@
+import { useLanguage } from "./LanguageContext";
+
 function ContactHero({ setOpen }) {
+  const { t } = useLanguage();
   return (
     <main
       className="
@@ -64,7 +67,7 @@ function ContactHero({ setOpen }) {
             md:mb-12
           "
         >
-          Executive Office
+          {t("Executive Office")}
         </span>
 
 
@@ -94,7 +97,7 @@ function ContactHero({ setOpen }) {
               mb-3
             "
           >
-            Secure Voice
+            {t("Secure Voice")}
           </span>
 
           <h3
@@ -292,7 +295,7 @@ function ContactHero({ setOpen }) {
             duration-500
           "
         >
-          Initiate Protocol
+          {t("Initiate Protocol")}
         </button>
 
 

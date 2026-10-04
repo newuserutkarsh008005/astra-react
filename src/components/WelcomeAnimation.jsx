@@ -1,14 +1,25 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { useLanguage } from "./LanguageContext";
 
 
 export default function WelcomeAnimation() {
+  const { language } = useLanguage();
   const {user}=useAuth0()
   const username=`${user?.given_name}`
 
 
-const texts = [
+const texts = language === "hi" ? [
+  `वापसी पर स्वागत है, ${username} 👋 हर बुकिंग एक कदम आगे है। आज के दिन को सार्थक बनाएं।`,
+  `सुप्रभात, ${username} ☀️ ध्यान केंद्रित रखें, निरंतर बने रहें और आगे बढ़ते रहें।`,
+  `वापसी पर स्वागत है, ${username}। हर छोटा कदम मायने रखता है। 🚀`,
+  `आपको फिर देखकर अच्छा लगा, ${username}। क्या आज को उपयोगी बनाने के लिए तैयार हैं?`,
+  "आपका अगला अवसर बस एक बुकिंग दूर है।",
+  "पहले से योजना बनाएं, आगे बने रहें।",
+  "आज की मेहनत ही कल की उपलब्धि है।",
+  "निरंतर बने रहें। प्रगति साथ आएगी।",
+] : [
   `Welcome back, ${username} 👋 Every booking is a step forward. Let's make today count.`,
   `Good Morning, ${username} ☀️ Stay focused, stay consistent, and keep building momentum.`,
   `Welcome back, ${username}. Every small step counts. 🚀`,

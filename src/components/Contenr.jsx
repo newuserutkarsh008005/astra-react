@@ -9,9 +9,11 @@ import PageWrapper from "../components/PageWrapper";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import Recom from "./Recom";
+import { useLanguage } from "./LanguageContext";
 
 const Content = () => {
   const navigate = useNavigate();
+  const { language, t } = useLanguage();
 
   const [currdata, setcueedata] = useState({});
   const [isjoin, setisjoin] = useState(false);
@@ -185,7 +187,7 @@ const Content = () => {
               sm:mb-6
             "
           >
-            Upcoming Session
+            {t("Upcoming Session")}
           </h2>
 
 
@@ -236,7 +238,7 @@ const Content = () => {
                   {new Date(
                     currdata.slot.date
                   ).toLocaleDateString(
-                    "en-IN",
+                    language === "hi" ? "hi-IN" : "en-IN",
                     {
                       weekday: "long",
                       day: "numeric",
@@ -365,7 +367,7 @@ const Content = () => {
                     whitespace-nowrap
                   "
                 >
-                  Join Session
+                  {t("Join Session")}
                 </button>
               )}
 
@@ -417,7 +419,7 @@ const Content = () => {
               mb-5
             "
           >
-            Past Sessions
+            {t("Past Sessions")}
           </h2>
 
 
@@ -441,7 +443,7 @@ const Content = () => {
                   break-words
                 "
               >
-                Career Guidance
+                {t("Career Guidance")}
               </p>
 
               <span
@@ -469,7 +471,7 @@ const Content = () => {
                   break-words
                 "
               >
-                Compatibility Reading
+                {t("Compatibility Reading")}
               </p>
 
               <span
@@ -529,7 +531,7 @@ const Content = () => {
               mb-6
             "
           >
-            Recommended Services
+            {t("Recommended Services")}
           </h2>
 
 
@@ -609,7 +611,7 @@ const Content = () => {
                 mb-4
               "
             >
-              Today's Insight
+              {t("Today's Insight")}
             </h2>
 
 
@@ -623,9 +625,7 @@ const Content = () => {
                 leading-relaxed
               "
             >
-              Ask about your chart, planetary
-              positions, compatibility, or upcoming
-              sessions.
+              {t("Ask about your chart, planetary positions, compatibility, or upcoming sessions.")}
             </p>
 
           </div>
@@ -652,7 +652,7 @@ const Content = () => {
               transition
             "
           >
-            Descriptive View
+            {t("Descriptive View")}
           </button>
 
         </div>

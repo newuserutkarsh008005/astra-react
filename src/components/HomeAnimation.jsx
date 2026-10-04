@@ -1,9 +1,11 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { useLanguage } from "./LanguageContext";
 
 
 export default function HomeAnimation() {
+  const { t } = useLanguage();
   const {user}=useAuth0()
   const username=`${user?.given_name}`
 
@@ -25,7 +27,7 @@ const texts = [
     return () => clearInterval(interval);
   }, []);
 
-  const words = texts[cur].split(" ");
+  const words = t(texts[cur]).split(" ");
 
   return (
     <div className="flex justify-start px-10 overflow-hidden flex-wrap   h-fit w-4/5 ">

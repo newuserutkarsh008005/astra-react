@@ -18,7 +18,9 @@ import "swiper/css/effect-cards";
 import  { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "./Card";
+import { useLanguage } from "./LanguageContext";
 const ExploreCarousel = () => {
+  const { t } = useLanguage();
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -43,7 +45,7 @@ const ExploreCarousel = () => {
       <div className="flex h-screen items-center justify-center">
         <div className="flex items-center gap-3 rounded-full border border-[#D4AF37]/20 bg-[#111827] px-5 py-3 text-zinc-200 shadow-lg shadow-[#D4AF37]/5">
           <div className="h-5 w-5 animate-spin rounded-full border-2 border-[#D4AF37]/30 border-t-[#D4AF37]" />
-          <span>Loading services...</span>
+          <span>{t("Loading services...")}</span>
         </div>
       </div>
     );
@@ -53,7 +55,7 @@ const ExploreCarousel = () => {
     return (
       <div className="flex h-screen items-center justify-center px-4 text-center">
         <div className="rounded-2xl border border-white/10 bg-white/5 px-8 py-10">
-          <p className="text-lg text-zinc-300">No services available.</p>
+          <p className="text-lg text-zinc-300">{t("No services available.")}</p>
         </div>
       </div>
     );

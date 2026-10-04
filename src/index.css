@@ -3,6 +3,69 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
 
+html[data-theme="light"] body,
+html[data-theme="light"] #root {
+  background-color: #f1f5f5;
+  color: #17232b;
+}
+
+html[data-theme="light"] [class~="bg-gray-950"],
+html[data-theme="light"] [class~="bg-black"],
+html[data-theme="light"] [class~="bg-[#010103]"],
+html[data-theme="light"] [class~="bg-[#02070d]"],
+html[data-theme="light"] [class~="bg-[#020617]"],
+html[data-theme="light"] [class~="bg-[#020B26]"],
+html[data-theme="light"] [class~="bg-[#06070d]"],
+html[data-theme="light"] [class~="bg-[#0B1120]"] {
+  background-color: #edf2f1 !important;
+}
+
+html[data-theme="light"] [class~="bg-[#0a0b11]"],
+html[data-theme="light"] [class~="bg-[#0b1220]"],
+html[data-theme="light"] [class~="bg-white/[0.02]"],
+html[data-theme="light"] [class~="bg-white/[0.03]"],
+html[data-theme="light"] [class~="bg-white/5"] {
+  background-color: #ffffff !important;
+}
+
+html[data-theme="light"] [class~="text-white"],
+html[data-theme="light"] [class~="text-zinc-200"],
+html[data-theme="light"] [class~="text-zinc-300"],
+html[data-theme="light"] [class~="text-gray-300"] {
+  color: #17232b !important;
+}
+
+html[data-theme="light"] [class~="text-zinc-400"],
+html[data-theme="light"] [class~="text-zinc-500"],
+html[data-theme="light"] [class~="text-gray-400"],
+html[data-theme="light"] [class~="text-gray-500"] {
+  color: #53636a !important;
+}
+
+html[data-theme="light"] [class~="border-white/5"],
+html[data-theme="light"] [class~="border-white/10"],
+html[data-theme="light"] [class~="border-white/15"] {
+  border-color: rgb(23 35 43 / 14%) !important;
+}
+
+html[data-theme="light"] .global-toggle {
+  background-color: #ffffff !important;
+  border-color: rgb(23 35 43 / 20%) !important;
+  color: #17232b !important;
+}
+
+html[data-theme="light"] .navigation.open {
+  background: rgb(255 255 255 / 96%);
+}
+
+html[data-theme="light"] .navigation.open a {
+  color: #17232b;
+}
+
+html[data-theme="light"] button[class*="bg-amber-"] {
+  color: #ffffff !important;
+}
+
 .threedot{
   display: none;
   background: transparent;

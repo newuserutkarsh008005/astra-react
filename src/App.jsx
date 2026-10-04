@@ -33,6 +33,7 @@ import Setting from "./pages/Setting";
 import PaymentPage from "./pages/PaymentPage";
 
 import ProtectedRoute from "./components/Protected";
+import LanguageToggle from "./components/LanguageToggle";
 
 const App = () => {
   const [curr, setata] = useState(true);
@@ -76,6 +77,8 @@ const App = () => {
 
   return (
     <>
+      {hideNavbar && <LanguageToggle floating />}
+
       {/* =====================================================
           TOASTER
       ====================================================== */}

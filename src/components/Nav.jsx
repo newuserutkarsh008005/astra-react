@@ -10,9 +10,12 @@ import {
 
 import { useAuth0 } from "@auth0/auth0-react";
 import { useUser } from "./UserContext";
+import { useLanguage } from "./LanguageContext";
+import LanguageToggle from "./LanguageToggle";
 
 export default function Navbar({ curr, setata }) {
   const { dbuser } = useUser();
+  const { t } = useLanguage();
 
   const {
     loginWithRedirect,
@@ -190,7 +193,7 @@ export default function Navbar({ curr, setata }) {
               className={navStyle}
               onClick={() => setOpen(false)}
             >
-              Dashboard
+              {t("Dashboard")}
             </NavLink>
 
             <NavLink
@@ -198,7 +201,7 @@ export default function Navbar({ curr, setata }) {
               className={navStyle}
               onClick={() => setOpen(false)}
             >
-              Explore
+              {t("Explore")}
             </NavLink>
 
             <NavLink
@@ -206,7 +209,7 @@ export default function Navbar({ curr, setata }) {
               className={navStyle}
               onClick={() => setOpen(false)}
             >
-              Store
+              {t("Store")}
             </NavLink>
 
             <NavLink
@@ -214,7 +217,7 @@ export default function Navbar({ curr, setata }) {
               className={navStyle}
               onClick={() => setOpen(false)}
             >
-              Contact
+              {t("Contact")}
             </NavLink>
 
             <NavLink
@@ -222,7 +225,7 @@ export default function Navbar({ curr, setata }) {
               className={navStyle}
               onClick={() => setOpen(false)}
             >
-              About
+              {t("About")}
             </NavLink>
 
 
@@ -232,7 +235,7 @@ export default function Navbar({ curr, setata }) {
 
             {isLoading ? (
               <span className="text-sm text-gray-300">
-                Loading...
+                {t("Loading...")}
               </span>
             ) : !isAuthenticated ? (
               <button
@@ -255,7 +258,7 @@ export default function Navbar({ curr, setata }) {
                   duration-300
                 "
               >
-                Login
+                {t("Login")}
               </button>
             ) : (
               <button
@@ -278,7 +281,7 @@ export default function Navbar({ curr, setata }) {
                   duration-300
                 "
               >
-                Logout
+                {t("Logout")}
               </button>
             )}
 
@@ -292,6 +295,8 @@ export default function Navbar({ curr, setata }) {
                 shrink-0
               "
             />
+
+            <LanguageToggle />
 
           </div>
 
@@ -321,6 +326,7 @@ export default function Navbar({ curr, setata }) {
               "
             />
 
+            <LanguageToggle />
 
             {/* HAMBURGER */}
 
@@ -422,7 +428,7 @@ export default function Navbar({ curr, setata }) {
                 className={navStyle}
                 onClick={() => setOpen(false)}
               >
-                Home
+                {t("Home")}
               </NavLink>
 
 
@@ -433,7 +439,7 @@ export default function Navbar({ curr, setata }) {
                 className={navStyle}
                 onClick={() => setOpen(false)}
               >
-                Dashboard
+                {t("Dashboard")}
               </NavLink>
 
 
@@ -444,7 +450,7 @@ export default function Navbar({ curr, setata }) {
                 className={navStyle}
                 onClick={() => setOpen(false)}
               >
-                Explore
+                {t("Explore")}
               </NavLink>
 
 
@@ -455,7 +461,7 @@ export default function Navbar({ curr, setata }) {
                 className={navStyle}
                 onClick={() => setOpen(false)}
               >
-                Store
+                {t("Store")}
               </NavLink>
 
 
@@ -466,7 +472,7 @@ export default function Navbar({ curr, setata }) {
                 className={navStyle}
                 onClick={() => setOpen(false)}
               >
-                Contact
+                {t("Contact")}
               </NavLink>
 
 
@@ -477,7 +483,7 @@ export default function Navbar({ curr, setata }) {
                 className={navStyle}
                 onClick={() => setOpen(false)}
               >
-                About
+                {t("About")}
               </NavLink>
 
 
@@ -496,7 +502,7 @@ export default function Navbar({ curr, setata }) {
                 {isLoading ? (
 
                   <span className="text-sm text-gray-300">
-                    Loading...
+                    {t("Loading...")}
                   </span>
 
                 ) : !isAuthenticated ? (
@@ -522,7 +528,7 @@ export default function Navbar({ curr, setata }) {
                       duration-300
                     "
                   >
-                    Login
+                    {t("Login")}
                   </button>
 
                 ) : (
@@ -548,7 +554,7 @@ export default function Navbar({ curr, setata }) {
                       duration-300
                     "
                   >
-                    Logout
+                    {t("Logout")}
                   </button>
 
                 )}

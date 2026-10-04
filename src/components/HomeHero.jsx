@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
 import HomeAnimation from "./HomeAnimation";
+import { useLanguage } from "./LanguageContext";
 
 function HomeHero() {
+  const { t } = useLanguage();
 
   return (
 
@@ -48,7 +50,7 @@ function HomeHero() {
             sm:mb-6
           "
         >
-          Sector_04 // Deep_Field
+          {t("Sector_04 // Deep_Field")}
         </motion.p>
 
         {/* MAIN TITLE */}

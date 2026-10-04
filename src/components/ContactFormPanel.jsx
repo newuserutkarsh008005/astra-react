@@ -1,6 +1,8 @@
 import { useEffect } from "react";
+import { useLanguage } from "./LanguageContext";
 
 function ContactFormPanel({ open, setOpen }) {
+  const { t } = useLanguage();
 
   // Prevent background scrolling while drawer is open
   useEffect(() => {
@@ -180,7 +182,7 @@ function ContactFormPanel({ open, setOpen }) {
                 transition-colors
               "
             >
-              <span>CLOSE</span>
+              <span>{t("CLOSE")}</span>
 
               <span
                 className="
@@ -242,7 +244,7 @@ function ContactFormPanel({ open, setOpen }) {
                 text-[#d4b99b]/70
               "
             >
-              Secure Channel
+              {t("Secure Channel")}
             </p>
 
             <h2
@@ -259,10 +261,10 @@ function ContactFormPanel({ open, setOpen }) {
                 fontFamily: "'Cormorant Garamond', serif",
               }}
             >
-              Secure
+              {t("Secure")}
               <br />
 
-              <i>Communication</i>
+              <i>{t("Communication")}</i>
             </h2>
 
             <div
@@ -312,13 +314,13 @@ function ContactFormPanel({ open, setOpen }) {
                   text-[#d4b99b]
                 "
               >
-                Identity
+                {t("Identity")}
               </label>
 
               <input
                 id="contact-name"
                 type="text"
-                placeholder="Full Name"
+                placeholder={t("Full Name")}
                 autoComplete="name"
                 className="
                   w-full
@@ -370,13 +372,13 @@ function ContactFormPanel({ open, setOpen }) {
                   text-[#d4b99b]
                 "
               >
-                Endpoint
+                {t("Endpoint")}
               </label>
 
               <input
                 id="contact-email"
                 type="email"
-                placeholder="Email Address"
+                placeholder={t("Email Address")}
                 autoComplete="email"
                 className="
                   w-full
@@ -428,13 +430,13 @@ function ContactFormPanel({ open, setOpen }) {
                   text-[#d4b99b]
                 "
               >
-                Context
+                {t("Context")}
               </label>
 
               <textarea
                 id="contact-message"
                 rows={5}
-                placeholder="Brief details regarding your alignment query..."
+                placeholder={t("Brief details regarding your alignment query...")}
                 className="
                   w-full
 
@@ -532,7 +534,7 @@ function ContactFormPanel({ open, setOpen }) {
                     duration-500
                   "
                 >
-                  Transmit
+                  {t("Transmit")}
                 </span>
 
               </button>
@@ -558,8 +560,7 @@ function ContactFormPanel({ open, setOpen }) {
                 uppercase
               "
             >
-              Your communication remains private
-              and protected.
+              {t("Your communication remains private\n              and protected.")}
             </p>
 
           </form>

@@ -1,17 +1,19 @@
 import { useState } from "react";
+import { useLanguage } from "./LanguageContext";
 
 function SubscribeBox() {
+  const { t } = useLanguage();
 
   const [email, setEmail] = useState("");
 
   const handleSubscribe = () => {
 
     if (!email) {
-      alert("Please enter a valid email");
+      alert(t("Please enter a valid email"));
       return;
     }
 
-    alert(`Thanks! We'll notify you at ${email}`);
+    alert(`${t("Thanks! We'll notify you at")} ${email}`);
 
     setEmail("");
   };
@@ -21,7 +23,7 @@ function SubscribeBox() {
 
       <input
         type="email"
-        placeholder="Your email"
+        placeholder={t("Your email")}
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         className="
@@ -51,7 +53,7 @@ function SubscribeBox() {
          
         "
       >
-        Notify Me
+        {t("Notify Me")}
       </button>
 
     </div>

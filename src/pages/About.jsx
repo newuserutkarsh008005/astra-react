@@ -2,8 +2,10 @@ import Video2 from "../components/VideoBackground";
 import AboutHero from "../components/AboutHero";
 import AboutSection from "../components/AboutSection";
 import QuoteSection from "../components/QuoteSection";
+import { useLanguage } from "../components/LanguageContext";
 
 function About() {
+  const { t } = useLanguage();
   return (
     <main className="relative min-h-screen w-full overflow-hidden bg-[#02070d] text-white">
 
@@ -80,18 +82,18 @@ function About() {
         >
 
           <AboutSection
-            title="Precision Over Prediction"
-            text="Astra was built on one principle: clarity beats noise. We focus on what is measurable, meaningful, and actionable."
+            title={t("Precision Over Prediction")}
+            text={t("Astra was built on one principle: clarity beats noise. We focus on what is measurable, meaningful, and actionable.")}
           />
 
           <AboutSection
-            title="Modern Computation"
-            text="We combine advanced computation with human judgment to turn complexity into elegant, useful decisions."
+            title={t("Modern Computation")}
+            text={t("We combine advanced computation with human judgment to turn complexity into elegant, useful decisions.")}
           />
 
           <AboutSection
-            title="Ethical Intelligence"
-            text="Our approach is thoughtful by design. We protect trust, respect privacy, and create value without compromise."
+            title={t("Ethical Intelligence")}
+            text={t("Our approach is thoughtful by design. We protect trust, respect privacy, and create value without compromise.")}
           />
 
         </div>

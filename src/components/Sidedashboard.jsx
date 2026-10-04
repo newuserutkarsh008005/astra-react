@@ -12,6 +12,7 @@ import {
   X,
 } from "lucide-react";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useLanguage } from "./LanguageContext";
 
 const menuItems = [
   {
@@ -43,6 +44,7 @@ const menuItems = [
 
 const Sidedashboard = () => {
   const { user, logout } = useAuth0();
+  const { t } = useLanguage();
 
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -113,8 +115,8 @@ const Sidedashboard = () => {
           onClick={() => setMobileOpen((prev) => !prev)}
           aria-label={
             mobileOpen
-              ? "Close dashboard menu"
-              : "Open dashboard menu"
+              ? t("Close dashboard menu")
+              : t("Open dashboard menu")
           }
           className="
             w-11
@@ -225,7 +227,7 @@ const Sidedashboard = () => {
                   {item.icon}
 
                   <span className="text-sm tracking-wide">
-                    {item.name}
+                    {t(item.name)}
                   </span>
                 </Link>
               );
@@ -266,7 +268,7 @@ const Sidedashboard = () => {
                   font-medium
                 "
               >
-                Astra Premium
+                {t("Astra Premium")}
               </h3>
 
             </div>
@@ -279,8 +281,7 @@ const Sidedashboard = () => {
                 mb-4
               "
             >
-              Unlock advanced insights, exclusive
-              reports and priority consultations.
+              {t("Unlock advanced insights, exclusive reports and priority consultations.")}
             </p>
 
             <button
@@ -301,7 +302,7 @@ const Sidedashboard = () => {
                 transition
               "
             >
-              Upgrade
+              {t("Upgrade")}
             </button>
 
           </div>
@@ -381,11 +382,11 @@ const Sidedashboard = () => {
                 >
                   {user?.nickname ||
                     user?.name ||
-                    "User"}
+                    t("User")}
                 </h3>
 
                 <p className="text-xs text-zinc-500">
-                  Astra Member
+                  {t("Astra Member")}
                 </p>
 
               </div>
@@ -408,7 +409,7 @@ const Sidedashboard = () => {
                 transition-colors
               "
             >
-              Logout
+              {t("Logout")}
             </button>
 
           </div>
@@ -524,7 +525,7 @@ const Sidedashboard = () => {
                   {item.icon}
 
                   <span className="text-sm tracking-wide">
-                    {item.name}
+                    {t(item.name)}
                   </span>
                 </Link>
               );
@@ -576,7 +577,7 @@ const Sidedashboard = () => {
                   font-medium
                 "
               >
-                Astra Premium
+                {t("Astra Premium")}
               </h3>
 
             </div>
@@ -590,8 +591,7 @@ const Sidedashboard = () => {
                 mb-5
               "
             >
-              Unlock advanced insights, exclusive
-              reports and priority consultations.
+              {t("Unlock advanced insights, exclusive reports and priority consultations.")}
             </p>
 
 
@@ -613,7 +613,7 @@ const Sidedashboard = () => {
                 transition
               "
             >
-              Upgrade
+              {t("Upgrade")}
             </button>
 
           </div>

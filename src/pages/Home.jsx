@@ -66,7 +66,7 @@ function Home() {
             preload="auto"
           >
             <source
-              src="https://res.cloudinary.com/dehj18zcx/video/upload/v1780830253/newvideo_olhwr2.mp4"
+              src="https://res.cloudinary.com/dehj18zcx/video/upload/v1791109252/gemini_generated_video_8bab53dc_qwwajc.mp4"
               type="video/mp4"
             />
           </video>

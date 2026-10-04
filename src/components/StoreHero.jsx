@@ -1,7 +1,9 @@
 import Countdown from "./Countdown";
 import SubscribeBox from "./SubscribeBox";
+import { useLanguage } from "./LanguageContext";
 
 function StoreHero() {
+  const { t } = useLanguage();
   return (
     <div
       className="
@@ -26,16 +28,15 @@ function StoreHero() {
         "
         style={{ fontFamily: "'Cormorant Garamond'" }}
       >
-        ASTRA SHOP
+        {t("ASTRA SHOP")}
       </h2>
 
       <h1 className="text-4xl mb-4">
-        Coming Soon
+        {t("Coming Soon")}
       </h1>
 
       <p className="max-w-[460px] text-white/70 mb-8">
-        Our cosmic collection is preparing for launch.
-        Stay tuned and be the first to explore Astra's galactic treasures.
+        {t("Our cosmic collection is preparing for launch. Stay tuned and be the first to explore Astra's galactic treasures.")}
       </p>
 
       <Countdown />
