@@ -5,7 +5,7 @@ import { useLanguage } from "./LanguageContext";
 const Footer = () => {
   const { t } = useLanguage();
   return (
-    <footer className=" overf relative w-full mt-[120] px-[6%] py-[35] text-white ">
+    <footer className="overf relative mt-[120] w-full border-t border-white/10 bg-[#010103] px-[6%] py-[35] text-white">
       {/* Footer Grid */}
       <div className="mainfooter  grid grid-cols-4 gap-10">
         {/* Brand */}

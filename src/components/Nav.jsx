@@ -119,10 +119,13 @@ export default function Navbar({ curr, setata }) {
 
           z-[999999]
 
+          border-b
+          border-white/10
+          bg-[#030608]/75
+          backdrop-blur-xl
+
           flex
           items-center
-
-          bg-transparent
 
           pointer-events-auto
         "
