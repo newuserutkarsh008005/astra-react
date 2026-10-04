@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import Slotdet from "../components/Slotdet";
 import { useUser } from "../components/UserContext";
+
 import toast from "react-hot-toast";
 
 const ServiceDetails = () => {
+const navigate=useNavigate();
   const {dbuser}=useUser()
   const { id } = useParams();
   const [service, setService] = useState(null);
@@ -94,6 +96,8 @@ console.log("Option yaha hai ",options);
 
           console.log("BACKEND RESPONSE");
           console.log(datav.data);
+          navigate('/dashboard')
+
         } catch (err) {
           console.log("ERROR");
           console.log(err.message);
