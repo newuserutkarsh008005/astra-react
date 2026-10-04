@@ -102,7 +102,7 @@ function Home() {
             preload="auto"
           >
             <source
-              src="https://res.cloudinary.com/dehj18zcx/video/upload/v1779959160/video_e12f67.mp4"
+              src="https://res.cloudinary.com/dehj18zcx/video/upload/v1791109618/gemini_generated_video_9c98c8f0_ci6gda.mp4"
               type="video/mp4"
             />
           </video>
