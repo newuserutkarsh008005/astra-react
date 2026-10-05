@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { useLanguage } from "./LanguageContext";
 
 function ContactFormPanel({ open, setOpen }) {
@@ -23,37 +24,68 @@ function ContactFormPanel({ open, setOpen }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const payload = {
-      name: formData.name.trim(),
-      to: "utkarshprakash081105@gmail.com",
-      subject: "Astra Doubt",
-      message: formData.message.trim(),
-    };
+    const visitorName = formData.name.trim();
+    const visitorEmail = formData.email.trim();
+    const messageText = formData.message.trim();
 
-    if (!payload.name || !payload.message) {
+    if (!visitorName || !visitorEmail || !messageText) {
+      alert("Please fill in your name, email, and message.");
       return;
     }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(visitorEmail)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
+    const adminPayload = {
+      name: visitorName,
+      to: "utkarshprakash081105@gmail.com",
+      subject: "Astra Doubt",
+      message: `Name: ${visitorName}\nEmail: ${visitorEmail}\n\n${messageText}`,
+    };
+
+    const confirmationPayload = {
+      name: visitorName,
+      to: visitorEmail,
+      subject: "Astra - Message Received",
+      message: `Hi ${visitorName},\n\nThank you for contacting Astra. We have received your message and will get back to you soon.\n\nYour message:\n${messageText}\n\nBest regards,\nAstra Team`,
+    };
 
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/auth/sendMessage", {
+      setFormData({ name: "", email: "", message: "" });
+      setOpen(false);
+      toast.success("Message sent successfully");
+
+      const adminResponse = await fetch("/api/auth/sendMessage", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(adminPayload),
       });
 
-      if (!response.ok) {
-        throw new Error("Failed to send message");
+      if (!adminResponse.ok) {
+        throw new Error("Admin email failed");
       }
 
-      setFormData({ name: "", email: "", message: "" });
-      setOpen(false);
+      const confirmationResponse = await fetch("/api/auth/sendMessage", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(confirmationPayload),
+      });
+
+      if (!confirmationResponse.ok) {
+        throw new Error("User confirmation email failed");
+      }
     } catch (error) {
       console.error("Contact form submission failed:", error);
-      alert("Something went wrong while sending your message.");
+      toast.error("Something went wrong while sending your message.");
     } finally {
       setIsSubmitting(false);
     }
