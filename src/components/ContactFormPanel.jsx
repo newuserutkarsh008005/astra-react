@@ -1,8 +1,63 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLanguage } from "./LanguageContext";
 
 function ContactFormPanel({ open, setOpen }) {
   const { t } = useLanguage();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (event) => {
+    const { id, value } = event.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [id === "contact-name" ? "name" : id === "contact-email" ? "email" : "message"]:
+        value,
+    }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const payload = {
+      name: formData.name.trim(),
+      to: "utkarshprakash081105@gmail.com",
+      subject: "Astra Doubt",
+      message: formData.message.trim(),
+    };
+
+    if (!payload.name || !payload.message) {
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/auth/sendMessage", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
+
+      setFormData({ name: "", email: "", message: "" });
+      setOpen(false);
+    } catch (error) {
+      console.error("Contact form submission failed:", error);
+      alert("Something went wrong while sending your message.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   // Prevent background scrolling while drawer is open
   useEffect(() => {
@@ -286,9 +341,7 @@ function ContactFormPanel({ open, setOpen }) {
           ================================================= */}
 
           <form
-            onSubmit={(event) => {
-              event.preventDefault();
-            }}
+            onSubmit={handleSubmit}
             className="
               space-y-8
               sm:space-y-10
@@ -322,6 +375,8 @@ function ContactFormPanel({ open, setOpen }) {
                 type="text"
                 placeholder={t("Full Name")}
                 autoComplete="name"
+                value={formData.name}
+                onChange={handleChange}
                 className="
                   w-full
 
@@ -380,6 +435,8 @@ function ContactFormPanel({ open, setOpen }) {
                 type="email"
                 placeholder={t("Email Address")}
                 autoComplete="email"
+                value={formData.email}
+                onChange={handleChange}
                 className="
                   w-full
 
@@ -437,6 +494,8 @@ function ContactFormPanel({ open, setOpen }) {
                 id="contact-message"
                 rows={5}
                 placeholder={t("Brief details regarding your alignment query...")}
+                value={formData.message}
+                onChange={handleChange}
                 className="
                   w-full
 
@@ -477,6 +536,7 @@ function ContactFormPanel({ open, setOpen }) {
 
               <button
                 type="submit"
+                disabled={isSubmitting}
                 className="
                   group
 
@@ -502,6 +562,9 @@ function ContactFormPanel({ open, setOpen }) {
 
                   transition-all
                   duration-500
+
+                  disabled:cursor-not-allowed
+                  disabled:opacity-70
                 "
               >
 
@@ -534,7 +597,7 @@ function ContactFormPanel({ open, setOpen }) {
                     duration-500
                   "
                 >
-                  {t("Transmit")}
+                  {isSubmitting ? "Sending..." : t("Transmit")}
                 </span>
 
               </button>
