@@ -8,6 +8,7 @@ import {
 
 import { AnimatePresence } from "framer-motion";
 import { Toaster } from "react-hot-toast";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 import Home from "./pages/Home";
 import Explore from "./pages/Explore";
@@ -297,6 +298,7 @@ const App = () => {
           )}
 
       </div>
+      <SpeedInsights />
     </>
   );
 };
